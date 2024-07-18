@@ -1,114 +1,146 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <meta charset="UTF-8">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="./aznews-master/assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="./aznews-master/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/ticker-style.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/flaticon.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/slicknav.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/animate.min.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/slick.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/nice-select.css">
-    <link rel="stylesheet" href="./aznews-master/assets/css/style.css">
+    <!-- Title -->
+    <title>@yield('title')</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./newsbox-master/img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./newsbox-master/style.css">
 </head>
 
 <body>
-    {{-- <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="./aznews-master/assets/img/logo/logo.png" alt="">
-                </div>
-            </div>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-    </div> --}}
+    </div>
 
-    <header>
-        <!-- Header Start -->
-        <div class="header-area">
-            <div class="main-header ">
-                <div class="header-mid d-none d-md-block">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-3 col-lg-3 col-md-3">
-                                <div class="logo">
-                                    <a href="index.html"><img src="./aznews-master/assets/img/logo/logo.png"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 col-md-9">
-                                <div class="header-banner f-right ">
-                                    <img src="./aznews-master/assets/img/hero/header_card.jpg" alt="">
-                                </div>
-                            </div>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="newsbox-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container-fluid">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="newsboxNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="./newsbox-master/img/core-img/logo.png"
+                                alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
-                    </div>
-                </div>
-                <div class="header-bottom header-sticky">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
-                                <!-- sticky -->
-                                <div class="sticky-logo">
-                                    <a href="index.html"><img src="./aznews-master/assets/img/logo/logo.png"
-                                            alt=""></a>
-                                </div>
-                                <!-- Main-menu -->
-                                <div class="main-menu d-none d-md-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a href="./">Trang Chủ</a></li>
-                                            <li><a href="categori.html">Danh Mục</a></li>
-                                            <li><a href="about.html">Giới Thiệu</a></li>
-                                            <li><a href="latest_news.html">Tin Mới Nhất</a></li>
-                                            <li><a href="contact.html">Liên Hệ</a></li>
-                                            {{-- <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="details.html">Categori Details</a></li>
-                                                </ul>
-                                            </li> --}}
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="#">Trang Chủ</a>
+                                        {{-- <div class="megamenu">
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Europe</li>
+                                                <li><a href="#">United Kingdom</a></li>
+                                                <li><a href="#">Germany</a></li>
+                                                <li><a href="#">Latvia</a></li>
+                                                <li><a href="#">Poland</a></li>
+                                                <li><a href="#">Italy</a></li>
+                                                <li><a href="#">France</a></li>
+                                                <li><a href="#">Crotia</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Africa</li>
+                                                <li><a href="#">Algeria</a></li>
+                                                <li><a href="#">Angola</a></li>
+                                                <li><a href="#">Benin</a></li>
+                                                <li><a href="#">Botswana</a></li>
+                                                <li><a href="#">Burkina Faso</a></li>
+                                                <li><a href="#">Burundi</a></li>
+                                                <li><a href="#">Cameroon</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Asia</li>
+                                                <li><a href="#">Bangladesh</a></li>
+                                                <li><a href="#">Chaina</a></li>
+                                                <li><a href="#">India</a></li>
+                                                <li><a href="#">Afganistan</a></li>
+                                                <li><a href="#">Sri Lanka</a></li>
+                                                <li><a href="#">Nepal</a></li>
+                                                <li><a href="#">Bhutan</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">USA &amp; Canada</li>
+                                                <li><a href="#">California</a></li>
+                                                <li><a href="#">Florida</a></li>
+                                                <li><a href="#">Alabama</a></li>
+                                                <li><a href="#">New Yorks</a></li>
+                                                <li><a href="#">Texas</a></li>
+                                                <li><a href="#">Lowa</a></li>
+                                                <li><a href="#">Montana</a></li>
+                                            </ul>
+                                        </div> --}}
+                                    </li>
+                                    <li><a href="#">Tin Mới Nhất</a></li>
+                                    <li><a href="#">Danh Mục</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="catagory.html">Catagory</a></li>
+                                            <li><a href="single-post.html">Single Post</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="elements.html">Elements</a></li>
                                         </ul>
-                                    </nav>
+                                    </li>
+                                    <li><a href="#">Giới Thiệu</a>
+                                        {{-- <ul class="dropdown">
+                                            <li><a href="#">Archery</a></li>
+                                            <li><a href="#">Badminton</a></li>
+                                            <li><a href="#">Baseball</a></li>
+                                            <li><a href="#">Boxing</a></li>
+                                            <li><a href="#">Climbing</a></li>
+                                            <li><a href="#">Cricket</a></li>
+                                            <li><a href="#">Football</a></li>
+                                        </ul> --}}
+                                    </li>
+                                    <li><a href="#">Liên Hệ</a></li>
+                                </ul>
+
+                                <a href="" style="margin-left: 40px"><i class="fa-regular fa-user"></i></a>
+
+                                <!-- Header Add Area -->
+                                <div class="header-add-area">
+                                    <a href="#">
+                                        <img src="./newsbox-master/img/bg-img/add.png" alt="">
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-2 col-md-4">
-                                {{-- <div class="header-right-btn f-right d-none d-lg-block">
-                                    <i class="fas fa-search special-tag"></i>
-                                    <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search">
+                            <!-- Nav End -->
 
-                                        </form>
-                                    </div>
-                                </div> --}}
-                                <i class="fa-regular fa-user"></i></a>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-md-none"></div>
-                            </div>
                         </div>
-                    </div>
+                    </nav>
                 </div>
             </div>
         </div>
-        <!-- Header End -->
     </header>
+    <!-- ##### Header Area End ##### -->
