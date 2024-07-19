@@ -1,7 +1,7 @@
-@include('Admin.layouts.header')
+@include('admin.layouts.header')
 
-@include('Admin.layouts.sidebar')
+@include('admin.layouts.sidebar')
 
 @yield('content')
 
-@include('Admin.layouts.footer')
+@include('admin.layouts.footer')

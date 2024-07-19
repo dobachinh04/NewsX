@@ -1,4 +1,4 @@
-@extends('Client.layouts.master')
+@extends('client.layouts.master')
 
 @section('title')
     Trang Chủ - FlashNews
