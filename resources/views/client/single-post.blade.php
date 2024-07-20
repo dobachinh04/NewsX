@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 
 @section('title')
-    Chi Tiết
+    {{ $post->title }} - FlashNews
 @endsection
 
 @section('content')
@@ -34,7 +34,7 @@
                     <div class="post-details-content mb-100">
                         <p>{{ $post->content }}</p>
 
-                        <img class="mb-30" src="/newsbox-master/img/bg-img/31.jpg" alt="">
+                        <img class="mb-30" src="{{ asset('storage/images/' . $post->image) }}" alt="">
                         <p>Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum. Etiam pretium
                             turpis eget nibh laoreet iaculis. Proin ac urna at lectus volutpat lobortis. Vestibulum
                             venenatis iaculis diam vitae lobortis. Donec tincidunt viverra elit, sed consectetur est pr
@@ -156,23 +156,7 @@
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4">
                     <div class="sidebar-area">
 
-                        <!-- Newsletter Widget -->
-                        <div class="single-widget-area newsletter-widget mb-30">
-                            <h4>Subscribe to our newsletter</h4>
-                            <form action="#" method="post">
-                                <input type="email" name="nl-email" id="nlemail" placeholder="Your E-mail">
-                                <button type="submit" class="btn newsbox-btn w-100">Subscribe</button>
-                            </form>
-                            <p class="mt-30">Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue
-                                condimentum. Etiam pretium turpis eget nibh . volutpat lobortis.</p>
-                        </div>
-
-                        <!-- Add Widget -->
-                        <div class="single-widget-area add-widget mb-30">
-                            <a href="#">
-                                <img src="/newsbox-master/img/bg-img/add3.png" alt="">
-                            </a>
-                        </div>
+                        @include('client.components.subscribe')
 
                         <!-- Latest News Widget -->
                         <div class="single-widget-area news-widget mb-30">

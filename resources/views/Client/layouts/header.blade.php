@@ -105,11 +105,13 @@
                                     {{-- <li><a href="#">Tin Mới Nhất</a></li> --}}
                                     <li><a href="#">Danh Mục</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="catagory.html">Catagory</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
+                                            @foreach ($categories as $category)
+                                                <li>
+                                                    <a href="{{ route('client.category', ['id' => $category->id]) }}">
+                                                        {{ $category->name }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="#">Giới Thiệu</a>

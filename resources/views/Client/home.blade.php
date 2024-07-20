@@ -49,7 +49,7 @@
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail bg-overlay">
                                     <a href="{{ route('client.show', ['id' => $largePost->id]) }}"><img
-                                            src="./newsbox-master/img/bg-img/1.jpg" alt=""></a>
+                                            src="{{ asset('storage/images/' . $largePost->image) }}" alt=""></a>
                                 </div>
 
                                 <!-- Blog Content -->
@@ -70,7 +70,7 @@
                                     <!-- Blog Thumbnail -->
                                     <div class="blog-thumbnail bg-overlay">
                                         <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                src="./newsbox-master/img/bg-img/2.jpg" alt=""></a>
+                                                src="{{ asset('storage/images/' . $post->image) }}" alt=""></a>
                                     </div>
 
                                     <!-- Blog Content -->
@@ -167,7 +167,7 @@
                                     <a class="nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3"
                                         role="tab" aria-controls="nav-3" aria-selected="false">Cũ Nhất</a>
                                     <a class="nav-item nav-link" id="nav4" data-toggle="tab" href="#nav-4"
-                                        role="tab" aria-controls="nav-4" aria-selected="false">Đánh Giá Cao Nhất</a>
+                                        role="tab" aria-controls="nav-4" aria-selected="false">Nhiều Bình Luận Nhất</a>
                                 </div>
                             </nav>
                         </div>
@@ -182,16 +182,18 @@
                                             <div class="single-blog-post style-2 mb-5">
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
-                                                    <a href="#"><img src="./newsbox-master/img/bg-img/15.jpg"
-                                                            alt=""></a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
+                                                            src="{{ asset('storage/images/' . $post->image) }}" alt=""></a>
                                                 </div>
 
                                                 <!-- Blog Content -->
                                                 <div class="blog-content">
                                                     <span
                                                         class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
-                                                    <a href="#" class="post-title">{{ $post->title }}</a>
-                                                    <a href="#" class="post-author">By Michael Smith</a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-title">{{ $post->title }}</a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-author">By Michael Smith</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,15 +207,16 @@
                                             <div class="single-blog-post d-flex style-4 mb-30">
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
-                                                    <a href="#"><img src="./newsbox-master/img/bg-img/16.jpg"
-                                                            alt=""></a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
+                                                            src="{{ asset('storage/images/' . $post->image) }}" alt=""></a>
                                                 </div>
 
                                                 <!-- Blog Content -->
                                                 <div class="blog-content">
                                                     <span
                                                         class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
-                                                    <a href="#" class="post-title">{{ $post->title }}</a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-title">{{ $post->title }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -678,27 +681,7 @@
 
                 <!-- Sidebar Widget -->
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4">
-                    <div class="sidebar-area">
-
-                        <!-- Newsletter Widget -->
-                        <div class="single-widget-area newsletter-widget mb-30">
-                            <h4>Đăng Ký Để Cập Nhật Những Tin Tức Mới Nhất</h4>
-                            <form action="#" method="post">
-                                <input type="email" name="nl-email" id="nlemail" placeholder="Email của bạn...">
-                                <button type="submit" class="btn newsbox-btn w-100">Đăng Ký</button>
-                            </form>
-                            <p class="mt-30">Chúng tôi cam kết sẽ bảo mật thông tin của bạn tuyệt đối, không ai có thể
-                                biết ngoài bạn.</p>
-                        </div>
-
-                        <!-- Add Widget -->
-                        <div class="single-widget-area add-widget mb-30">
-                            <a href="#">
-                                <img src="./newsbox-master/img/bg-img/add3.png" alt="">
-                            </a>
-                        </div>
-
-                    </div>
+                    @include('client.components.subscribe')
                 </div>
             </div>
         </div>
