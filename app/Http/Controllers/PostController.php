@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,7 +13,35 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('client.home');
+        // Lấy 8 bài viết mới nhất
+        $posts = Post::take(8)->get();
+
+        // Lấy 3 bài viết có lượt xem nhiều nhất để hiện thị lên slide
+        $slidePosts = Post::orderBy('view', 'desc')->take(3)->get();
+
+        // Lấy danh mục từ các bài viết
+        $categories = Category::whereIn('id', $slidePosts->pluck('category_id'))->get();
+
+        // Phân loại bài viết
+        $largePost = $slidePosts->shift(); // Lấy bài viết đầu tiên (bài lớn nhất)
+        $smallPosts = $slidePosts; // Hai bài viết còn lại
+
+        // Chia dữ liệu thành hai nhóm
+        $latestPosts = $posts->take(2); // 2 bài viết mới nhất
+        $otherPosts = $posts->slice(2);  // 6 bài viết còn lại
+
+        // Lấy 3 bài viết có lượt xem nhiều nhất
+        $trendingPosts = Post::orderBy('view', 'desc')->take(3)->get();
+
+        // Trả dữ liệu đến view 'home'
+        return view('client.home', [
+            'latestPosts' => $latestPosts,
+            'otherPosts' => $otherPosts,
+            'trendingPosts' => $trendingPosts,
+            'categories' => $categories,
+            'largePost' => $largePost,
+            'smallPosts' => $smallPosts,
+        ]);
     }
 
     /**
@@ -35,7 +65,9 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('client.single-post', ['post' => $post]);
     }
 
     /**

@@ -13,15 +13,17 @@
                     <!-- Breaking News Widget -->
                     <div class="breaking-news-ticker d-flex flex-wrap align-items-center">
                         <div class="title">
-                            <h6>Trending</h6>
+                            <h6>Xu Hướng</h6>
                         </div>
                         <div id="breakingNewsTicker" class="ticker">
                             <ul>
-                                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                                        malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum.</a></li>
-                                <li><a href="#">Welcome to Colorlib Family.</a></li>
-                                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                                        malesuada lorem maximus mauris scelerisque</a></li>
+                                @foreach ($trendingPosts as $post)
+                                    <li>
+                                        <a href="{{ route('client.show', ['id' => $post->id]) }}">
+                                            {{ $post->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -46,53 +48,48 @@
                                 data-duration="1000ms">
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail bg-overlay">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/1.jpg" alt=""></a>
+                                    <a href="{{ route('client.show', ['id' => $largePost->id]) }}"><img
+                                            src="./newsbox-master/img/bg-img/1.jpg" alt=""></a>
                                 </div>
 
                                 <!-- Blog Content -->
                                 <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <a href="#" class="post-title">Traffic Problems in Time Square</a>
+                                    <a href="{{ route('client.show', ['id' => $largePost->id]) }}"><span
+                                            class="post-date">{{ $largePost->created_at->format('F d, Y') }}</span></a>
+                                    <a href="{{ route('client.show', ['id' => $largePost->id]) }}"
+                                        class="post-title">{{ $largePost->title }}</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <!-- Single Blog Post Area -->
-                            <div class="single-blog-post style-1 mb-30" data-animation="fadeInUpBig" data-delay="300ms"
-                                data-duration="1000ms">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail bg-overlay">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/2.jpg" alt=""></a>
-                                </div>
+                            @foreach ($smallPosts as $post)
+                                <div class="single-blog-post style-1 mb-30" data-animation="fadeInUpBig" data-delay="300ms"
+                                    data-duration="1000ms">
+                                    <!-- Blog Thumbnail -->
+                                    <div class="blog-thumbnail bg-overlay">
+                                        <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
+                                                src="./newsbox-master/img/bg-img/2.jpg" alt=""></a>
+                                    </div>
 
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <a href="#" class="post-title">The best way to spend your holliday</a>
+                                    <!-- Blog Content -->
+                                    <div class="blog-content">
+                                        <a href="{{ route('client.show', ['id' => $post->id]) }}"><span
+                                                class="post-date">{{ $post->created_at->format('F d, Y') }}</span></a>
+                                        <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                            class="post-title">{{ $post->title }}</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Single Blog Post Area -->
-                            <div class="single-blog-post style-1" data-animation="fadeInUpBig" data-delay="500ms"
-                                data-duration="1000ms">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail bg-overlay">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/3.jpg" alt=""></a>
-                                </div>
-
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <a href="#" class="post-title">Sport results for the weekend games</a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Single Slide -->
-            <div class="single-slide">
+            {{-- *Slide chuyển sang 3 ảnh bài viết khác* --}}
+            {{-- <div class="single-slide">
                 <div class="container-fluid">
                     <div class="row">
                         <!-- Single Blog Post Area -->
@@ -144,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
@@ -160,171 +157,68 @@
 
                         <!-- Intro News Filter -->
                         <div class="intro-news-filter d-flex justify-content-between">
-                            <h6>All the news</h6>
+                            <h6>Tất cả các tin tức</h6>
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav1" data-toggle="tab" href="#nav-1"
-                                        role="tab" aria-controls="nav-1" aria-selected="true">Latest</a>
+                                        role="tab" aria-controls="nav-1" aria-selected="true">Mới Nhất</a>
                                     <a class="nav-item nav-link" id="nav2" data-toggle="tab" href="#nav-2"
-                                        role="tab" aria-controls="nav-2" aria-selected="false">Popular</a>
+                                        role="tab" aria-controls="nav-2" aria-selected="false">Hot Nhất</a>
                                     <a class="nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3"
-                                        role="tab" aria-controls="nav-3" aria-selected="false">International</a>
+                                        role="tab" aria-controls="nav-3" aria-selected="false">Cũ Nhất</a>
                                     <a class="nav-item nav-link" id="nav4" data-toggle="tab" href="#nav-4"
-                                        role="tab" aria-controls="nav-4" aria-selected="false">Local</a>
+                                        role="tab" aria-controls="nav-4" aria-selected="false">Đánh Giá Cao Nhất</a>
                                 </div>
                             </nav>
                         </div>
 
                         <div class="tab-content" id="nav-tabContent">
 
-                            <div class="tab-pane fade show active" id="nav-1" role="tabpanel"
-                                aria-labelledby="nav1">
+                            <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav1">
                                 <div class="row">
                                     <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post style-2 mb-5">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/14.jpg"
-                                                        alt=""></a>
-                                            </div>
+                                    @foreach ($latestPosts as $post)
+                                        <div class="col-12 col-sm-6">
+                                            <div class="single-blog-post style-2 mb-5">
+                                                <!-- Blog Thumbnail -->
+                                                <div class="blog-thumbnail">
+                                                    <a href="#"><img src="./newsbox-master/img/bg-img/15.jpg"
+                                                            alt=""></a>
+                                                </div>
 
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Elon Musk: Tesla worker admitted
-                                                    to sabotage</a>
-                                                <a href="#" class="post-author">By Michael Smith</a>
+                                                <!-- Blog Content -->
+                                                <div class="blog-content">
+                                                    <span
+                                                        class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                                    <a href="#" class="post-title">{{ $post->title }}</a>
+                                                    <a href="#" class="post-author">By Michael Smith</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
+
 
                                     <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post style-2 mb-5">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/15.jpg"
-                                                        alt=""></a>
-                                            </div>
 
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Rachel Sm ith breaks down while
-                                                    discussing border crisis</a>
-                                                <a href="#" class="post-author">By Michael Smith</a>
+                                    @foreach ($otherPosts as $post)
+                                        <div class="col-12 col-sm-6">
+                                            <div class="single-blog-post d-flex style-4 mb-30">
+                                                <!-- Blog Thumbnail -->
+                                                <div class="blog-thumbnail">
+                                                    <a href="#"><img src="./newsbox-master/img/bg-img/16.jpg"
+                                                            alt=""></a>
+                                                </div>
+
+                                                <!-- Blog Content -->
+                                                <div class="blog-content">
+                                                    <span
+                                                        class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                                    <a href="#" class="post-title">{{ $post->title }}</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
 
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/16.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no
-                                                    emergency savings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/17.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no
-                                                    emergency savings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/18.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over
-                                                    $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/19.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over
-                                                    $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/20.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war
-                                                    fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/21.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war
-                                                    fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -788,13 +682,13 @@
 
                         <!-- Newsletter Widget -->
                         <div class="single-widget-area newsletter-widget mb-30">
-                            <h4>Subscribe to our newsletter</h4>
+                            <h4>Đăng Ký Để Cập Nhật Những Tin Tức Mới Nhất</h4>
                             <form action="#" method="post">
-                                <input type="email" name="nl-email" id="nlemail" placeholder="Your E-mail">
-                                <button type="submit" class="btn newsbox-btn w-100">Subscribe</button>
+                                <input type="email" name="nl-email" id="nlemail" placeholder="Email của bạn...">
+                                <button type="submit" class="btn newsbox-btn w-100">Đăng Ký</button>
                             </form>
-                            <p class="mt-30">Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue
-                                condimentum. Etiam pretium turpis eget nibh . volutpat lobortis.</p>
+                            <p class="mt-30">Chúng tôi cam kết sẽ bảo mật thông tin của bạn tuyệt đối, không ai có thể
+                                biết ngoài bạn.</p>
                         </div>
 
                         <!-- Add Widget -->

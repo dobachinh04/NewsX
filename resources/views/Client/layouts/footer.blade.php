@@ -2,7 +2,7 @@
  <footer class="footer-area">
      <!-- Footer Logo -->
      <div class="footer-logo mb-100">
-         <a href="index.html"><img src="./newsbox-master/img/core-img/logo.png" alt=""></a>
+         <a href="index.html"><img src="/newsbox-master/img/core-img/logo.png" alt=""></a>
      </div>
      <!-- Footer Content -->
      <div class="container">
@@ -57,17 +57,17 @@
 
  <!-- ##### All Javascript Script ##### -->
  <script src="https://kit.fontawesome.com/9cc1e5b793.js" crossorigin="anonymous"></script>
- 
+
  <!-- jQuery-2.2.4 js -->
- <script src="./newsbox-master/js/jquery/jquery-2.2.4.min.js"></script>
+ <script src="/newsbox-master/js/jquery/jquery-2.2.4.min.js"></script>
  <!-- Popper js -->
- <script src="./newsbox-master/js/bootstrap/popper.min.js"></script>
+ <script src="/newsbox-master/js/bootstrap/popper.min.js"></script>
  <!-- Bootstrap js -->
- <script src="./newsbox-master/js/bootstrap/bootstrap.min.js"></script>
+ <script src="/newsbox-master/js/bootstrap/bootstrap.min.js"></script>
  <!-- All Plugins js -->
- <script src="./newsbox-master/js/plugins/plugins.js"></script>
+ <script src="/newsbox-master/js/plugins/plugins.js"></script>
  <!-- Active js -->
- <script src="./newsbox-master/js/active.js"></script>
+ <script src="/newsbox-master/js/active.js"></script>
  </body>
 
  </html>

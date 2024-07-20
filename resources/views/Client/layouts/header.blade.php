@@ -12,10 +12,10 @@
     <title>@yield('title')</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./newsbox-master/img/core-img/favicon.ico">
+    <link rel="icon" href="/newsbox-master/img/core-img/favicon.ico">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./newsbox-master/style.css">
+    <link rel="stylesheet" href="/newsbox-master/style.css">
 </head>
 
 <body>
@@ -39,8 +39,8 @@
                     <nav class="classy-navbar justify-content-between" id="newsboxNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="./newsbox-master/img/core-img/logo.png"
-                                alt=""></a>
+                        <a href="{{ route('client.home') }}" class="nav-brand"><img
+                                src="/newsbox-master/img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -58,7 +58,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="#">Trang Chủ</a>
+                                    <li><a href="{{ route('client.home') }}">Trang Chủ</a>
                                         {{-- <div class="megamenu">
                                             <ul class="single-mega cn-col-4">
                                                 <li class="title">Europe</li>
@@ -102,7 +102,7 @@
                                             </ul>
                                         </div> --}}
                                     </li>
-                                    <li><a href="#">Tin Mới Nhất</a></li>
+                                    {{-- <li><a href="#">Tin Mới Nhất</a></li> --}}
                                     <li><a href="#">Danh Mục</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html">Home</a></li>
@@ -131,7 +131,7 @@
                                 <!-- Header Add Area -->
                                 <div class="header-add-area">
                                     <a href="#">
-                                        <img src="./newsbox-master/img/bg-img/add.png" alt="">
+                                        <img src="/newsbox-master/img/bg-img/add.png" alt="">
                                     </a>
                                 </div>
                             </div>
