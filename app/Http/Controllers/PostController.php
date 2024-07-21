@@ -74,7 +74,13 @@ class PostController extends Controller
         // categories để foreach ra các danh mục
         $categories = Category::all();
 
-        return view('client.single-post', ['post' => $post, 'categories' => $categories]);
+        $latestPostsComponent = Post::orderBy('created_at', 'desc')->take(5)->get();
+
+        return view('client.single-post', [
+            'post' => $post,
+            'categories' => $categories,
+            'latestPostsComponent' => $latestPostsComponent,
+        ]);
     }
 
     public function categories(string $id)
@@ -88,13 +94,13 @@ class PostController extends Controller
         // Lấy các bài viết thuộc danh mục này
         $posts = Post::where('category_id', $id)->get();
 
-        $latestPosts = Post::orderBy('created_at', 'desc')->take(8)->get();
+        $latestPostsComponent = Post::orderBy('created_at', 'desc')->take(5)->get();
 
         return view('client.category', [
             'category' => $category,
             'categories' => $categories,
             'posts' => $posts,
-            'latestPosts' => $latestPosts,
+            'latestPostsComponent' => $latestPostsComponent,
         ]);
     }
 

@@ -86,7 +86,7 @@
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                            src="{{ asset('storage/images/' . $post->image) }}""
+                                                            src="{{ asset('storage/images/' . $post->image) }}"
                                                             style="width: 350px; height: 240px; object-fit: cover;"
                                                             alt=""></a>
                                                 </div>
