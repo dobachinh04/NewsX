@@ -49,7 +49,8 @@
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail bg-overlay">
                                     <a href="{{ route('client.show', ['id' => $largePost->id]) }}"><img
-                                            src="{{ asset('storage/images/' . $largePost->image) }}" alt=""></a>
+                                            src="{{ asset('storage/images/' . $largePost->image) }}"
+                                            style="width: 900px; height: 710px; object-fit: cover;" alt=""></a>
                                 </div>
 
                                 <!-- Blog Content -->
@@ -70,7 +71,8 @@
                                     <!-- Blog Thumbnail -->
                                     <div class="blog-thumbnail bg-overlay">
                                         <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                src="{{ asset('storage/images/' . $post->image) }}" alt=""></a>
+                                                src="{{ asset('storage/images/' . $post->image) }}"
+                                                style="width: 900px; height: 340px; object-fit: cover;" alt=""></a>
                                     </div>
 
                                     <!-- Blog Content -->
@@ -183,7 +185,9 @@
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                            src="{{ asset('storage/images/' . $post->image) }}" alt=""></a>
+                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            style="width: 350px; height: 240px; object-fit: cover;"
+                                                            alt=""></a>
                                                 </div>
 
                                                 <!-- Blog Content -->
@@ -208,7 +212,9 @@
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                            src="{{ asset('storage/images/' . $post->image) }}" alt=""></a>
+                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            style="width: 120px; height: 90px; object-fit: cover;"
+                                                            alt=""></a>
                                                 </div>
 
                                                 <!-- Blog Content -->

@@ -104,7 +104,7 @@
                                     </li>
                                     {{-- <li><a href="#">Tin Mới Nhất</a></li> --}}
                                     <li><a href="#">Danh Mục</a>
-                                        <ul class="dropdown">
+                                        <ul class="dropdown p-0">
                                             @foreach ($categories as $category)
                                                 <li>
                                                     <a href="{{ route('client.category', ['id' => $category->id]) }}">

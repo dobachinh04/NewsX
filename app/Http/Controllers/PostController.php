@@ -88,10 +88,13 @@ class PostController extends Controller
         // Lấy các bài viết thuộc danh mục này
         $posts = Post::where('category_id', $id)->get();
 
+        $latestPosts = Post::orderBy('created_at', 'desc')->take(8)->get();
+
         return view('client.category', [
             'category' => $category,
             'categories' => $categories,
-            'posts' => $posts
+            'posts' => $posts,
+            'latestPosts' => $latestPosts,
         ]);
     }
 
