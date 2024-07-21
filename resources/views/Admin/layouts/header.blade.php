@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>@yield('title')</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./focus-2/images/favicon.png">
-    <link rel="stylesheet" href="./focus-2/vendor/owl-carousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./focus-2/vendor/owl-carousel/css/owl.theme.default.min.css">
-    <link href="./focus-2/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
-    <link href="./focus-2/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="/focus-2/images/favicon.png">
+    <link rel="stylesheet" href="/focus-2/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/focus-2/vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="/focus-2/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="/focus-2/css/style.css" rel="stylesheet">
 
 
 
@@ -43,10 +43,10 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="./" class="brand-logo">
-                <img class="logo-abbr" src="./focus-2/images/logo.png" alt="">
-                <img class="logo-compact" src="./focus-2/images/logo-text.png" alt="">
-                <img class="brand-title" src="./focus-2/images/logo-text.png" alt="">
+            <a href="{{ route('client.home') }}" class="brand-logo">
+                <img class="logo-abbr" src="/focus-2/images/logo.png" alt="">
+                <img class="logo-compact" src="/focus-2/images/logo-text.png" alt="">
+                <img class="brand-title" src="/focus-2/images/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">

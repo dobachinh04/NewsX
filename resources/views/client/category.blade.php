@@ -37,7 +37,7 @@
 
                         <!-- Intro News Filter -->
                         <div class="intro-news-filter d-flex justify-content-between">
-                            <h6>Tất cả các tin tức</h6>
+                            <h6>Danh Mục Tin - {{ $category->name }}</h6>
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav1" data-toggle="tab" href="#nav-1"

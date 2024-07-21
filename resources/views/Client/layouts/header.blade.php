@@ -125,10 +125,15 @@
                                             <li><a href="#">Football</a></li>
                                         </ul> --}}
                                     </li>
-                                    <li><a href="#">Liên Hệ</a></li>
-                                </ul>
 
-                                <a href="" style="margin-left: 40px"><i class="fa-regular fa-user"></i></a>
+                                    <li><a href="#">Liên Hệ</a></li>
+
+                                    <li><a href="{{ route('admin.dashboard') }}"><i class="fa-regular fa-user"></i></a>
+                                    </li>
+
+                                    <li><input type="text" class="form-control" style="height: 22px"
+                                            placeholder="Tìm Kiếm..."></li>
+                                </ul>
 
                                 <!-- Header Add Area -->
                                 <div class="header-add-area">
