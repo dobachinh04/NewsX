@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Client\PostController;
@@ -14,10 +15,10 @@ Route::get('/show/{id}',                            [PostController::class, 'sho
 Route::get('admin/dashboard',                       [DashboardController::class, 'index'])->name('admin.dashboard');
 
 // Admin - Posts - Category:
-Route::get('admin/categories',                      [AdminPostController::class, 'index'])->name('admin.categories.index');
-Route::get('admin/categories/create',               [AdminPostController::class, 'create'])->name('admin.categories.create');
-Route::get('admin/categories/update/{id}',          [AdminPostController::class, 'update'])->name('admin.categories.update');
-Route::get('admin/categories/show/{id}',            [AdminPostController::class, 'show'])->name('admin.categories.show');
+Route::get('admin/categories',                      [CategoryController::class, 'index'])->name('admin.categories.index');
+Route::get('admin/categories/create',               [CategoryController::class, 'create'])->name('admin.categories.create');
+Route::get('admin/categories/update/{id}',          [CategoryController::class, 'update'])->name('admin.categories.update');
+Route::get('admin/categories/show/{id}',            [CategoryController::class, 'show'])->name('admin.categories.show');
 
 // Admin - Posts:
 Route::get('admin/posts',                           [AdminPostController::class, 'index'])->name('admin.posts.index');

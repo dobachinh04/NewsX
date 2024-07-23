@@ -14,7 +14,7 @@
              <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                          class="icon icon-app-store"></i><span class="nav-text">Danh Mục Bài Viết</span></a>
                  <ul aria-expanded="false">
-                     <li><a href="./">Danh Sách Danh Mục</a></li>
+                     <li><a href="{{ route('admin.categories.index') }}">Danh Sách Danh Mục</a></li>
                      <li><a href="./app-calender.html">Thêm Danh Mục</a></li>
                  </ul>
              </li>
