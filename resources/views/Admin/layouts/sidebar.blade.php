@@ -6,7 +6,7 @@
          <ul class="metismenu" id="menu">
              <li class="nav-label first">Trang Chủ</li>
              <li>
-                 <a class="" href="./admin" aria-expanded="false"><i class="fa-solid fa-cube"></i><span
+                 <a class="" href="{{ route('admin.dashboard') }}" aria-expanded="false"><i class="fa-solid fa-cube"></i><span
                          class="nav-text">Bảng Điều Khiển</span></a>
              </li>
 
@@ -14,7 +14,7 @@
              <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                          class="icon icon-app-store"></i><span class="nav-text">Danh Mục Bài Viết</span></a>
                  <ul aria-expanded="false">
-                     <li><a href="./app-profile.html">Danh Sách Danh Mục</a></li>
+                     <li><a href="./">Danh Sách Danh Mục</a></li>
                      <li><a href="./app-calender.html">Thêm Danh Mục</a></li>
                  </ul>
              </li>
@@ -22,7 +22,7 @@
              <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                          class="icon icon-app-store"></i><span class="nav-text">Bài Viết</span></a>
                  <ul aria-expanded="false">
-                     <li><a href="./app-profile.html">Danh Sách Bài Viết</a></li>
+                     <li><a href="{{ route('admin.posts.index') }}">Danh Sách Bài Viết</a></li>
                      <li><a href="./app-calender.html">Thêm Bài Viết</a></li>
                  </ul>
              </li>
