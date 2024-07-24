@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,14 @@ Route::get('/author/{id}',                          [PostController::class, 'sho
 Route::get('admin/dashboard',                       [DashboardController::class, 'index'])->name('admin.dashboard');
 
 // Admin - Posts - Category:
-Route::get('admin/categories',                      [CategoryController::class, 'index'])->name('admin.categories.index');
-Route::get('admin/categories/create',               [CategoryController::class, 'create'])->name('admin.categories.create');
-Route::get('admin/categories/update/{id}',          [CategoryController::class, 'update'])->name('admin.categories.update');
-Route::get('admin/categories/show/{id}',            [CategoryController::class, 'show'])->name('admin.categories.show');
+Route::prefix('admin/categories')->name('admin.categories.')->group(function() {
+    Route::get('/',                                 [CategoryController::class, 'index'])->name('index');
+    Route::get('/create',                           [CategoryController::class, 'create'])->name('create');
+    Route::post('/',                                [CategoryController::class, 'store'])->name('store');
+    Route::get('/{id}/edit',                        [CategoryController::class, 'edit'])->name('edit');
+    Route::put('/{id}',                             [CategoryController::class, 'update'])->name('update');
+    Route::delete('/{id}',                          [CategoryController::class, 'destroy'])->name('destroy');
+});
 
 // Admin - Posts:
 Route::get('admin/posts',                           [AdminPostController::class, 'index'])->name('admin.posts.index');
@@ -28,9 +33,9 @@ Route::get('admin/posts/update/{id}',               [AdminPostController::class,
 Route::get('admin/posts/show/{id}',                 [AdminPostController::class, 'show'])->name('admin.posts.show');
 
 // Admin - Users:
-Route::get('admin/users',                           [AdminPostController::class, 'index'])->name('admin.users.index');
-Route::get('admin/users/create',                    [AdminPostController::class, 'create'])->name('admin.users.create');
-Route::get('admin/users/update/{id}',               [AdminPostController::class, 'update'])->name('admin.users.update');
-Route::get('admin/users/show/{id}',                 [AdminPostController::class, 'show'])->name('admin.users.show');
+Route::get('admin/users',                           [UserController::class, 'index'])->name('admin.users.index');
+Route::get('admin/users/create',                    [UserController::class, 'create'])->name('admin.users.create');
+Route::get('admin/users/update/{id}',               [UserController::class, 'update'])->name('admin.users.update');
+Route::get('admin/users/show/{id}',                 [UserController::class, 'show'])->name('admin.users.show');
 
 // Route::get('/', PostController::class .'@index')->name('posts.index');

@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -31,7 +31,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        // Tạo mới category
+        Category::create([
+            'name' => $request->input('name'),
+        ]);
+
+        // Chuyển hướng về index category và truyền thêm flash session success
+        return redirect()->route('admin.categories.index')->with('success', 'Thêm thành công.');
     }
 
     /**
@@ -47,7 +58,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.categories.update');
     }
 
     /**

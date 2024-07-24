@@ -1,33 +1,10 @@
-<!--**********************************
-                Footer start
-            ***********************************-->
 <div class="footer">
     <div class="copyright">
-        <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
-        <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p>
+        <p>Developed by <a href="https://github.com/dobachinh04/FlashNews" target="_blank">Đỗ Bá Chính</a> - 2024</p>
+        <p>News Website - Laravel Personal Project</p>
     </div>
 </div>
-<!--**********************************
-                        Footer end
-                    ***********************************-->
 
-<!--**********************************
-                       Support ticket button start
-                    ***********************************-->
-
-<!--**********************************
-                       Support ticket button end
-                    ***********************************-->
-
-
-</div>
-<!--**********************************
-                    Main wrapper end
-                ***********************************-->
-
-<!--**********************************
-                    Scripts
-                ***********************************-->
 <!-- Required vendors -->
 <script src="/focus-2/vendor/global/global.min.js"></script>
 <script src="/focus-2/js/quixnav-init.js"></script>
