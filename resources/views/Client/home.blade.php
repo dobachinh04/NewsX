@@ -195,7 +195,7 @@
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                                         class="post-title">{{ $post->title }}</a>
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"
-                                                        class="post-author">By Michael Smith</a>
+                                                        class="post-author">{{ $author->name }}</a>
                                                 </div>
                                             </div>
                                         </div>
