@@ -12,11 +12,12 @@
                 <div class="col-12 col-lg-8">
                     <!-- Post Content -->
                     <div class="post-content">
-                        <p class="tag"><span>Local News</span></p>
+                        <p class="tag"><span>{{ $category->name }}</span></p>
                         <p class="post-title">{{ $post->title }}</p>
                         <div class="d-flex align-items-center">
                             <span class="post-date mr-30">{{ $post->created_at->format('F d, Y') }}</span>
-                            <span class="post-date">By Michael Smith</span>
+                            <a href="{{ route('client.author', ['id' => $post->id]) }}"><span class="post-date">Tác Giả:
+                                    {{ $post->author->name }}</span></a>
                         </div>
                     </div>
                 </div>

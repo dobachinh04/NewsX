@@ -11,8 +11,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        // Lấy 8 bài viết mới nhất
-        $posts = Post::take(8)->get();
+        // Lấy 8 bài viết mới nhất và tác giả
+        $posts = Post::with('author')->take(8)->get();
 
         // Chia dữ liệu thành hai nhóm
         $latestPosts = $posts->take(2); // 2 bài viết mới nhất
@@ -67,7 +67,10 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::with('author')->findOrFail($id);
+
+        // category này lấy ra category theo id để hiển thị 
+        $category = Category::findOrFail($id);
 
         // categories để foreach ra các danh mục
         $categories = Category::all();
@@ -76,6 +79,7 @@ class PostController extends Controller
 
         return view('client.single-post', [
             'post' => $post,
+            'category' => $category,
             'categories' => $categories,
             'latestPostsComponent' => $latestPostsComponent,
         ]);

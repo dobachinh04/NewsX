@@ -47,7 +47,7 @@
                             <div class="single-blog-post style-1" data-animation="fadeInUpBig" data-delay="100ms"
                                 data-duration="1000ms">
                                 <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail bg-overlay">
+                                <div class="blog-thumbnail">
                                     <a href="{{ route('client.show', ['id' => $largePost->id]) }}"><img
                                             src="{{ asset('storage/images/' . $largePost->image) }}"
                                             style="width: 900px; height: 710px; object-fit: cover;" alt=""></a>
@@ -194,8 +194,8 @@
                                                         class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                                         class="post-title">{{ $post->title }}</a>
-                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
-                                                        class="post-author">{{ $author->name }}</a>
+                                                    <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                                        class="post-author">Tác Giả: {{ $post->author->name }}</a>
                                                 </div>
                                             </div>
                                         </div>
