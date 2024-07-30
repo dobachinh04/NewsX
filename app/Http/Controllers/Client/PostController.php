@@ -69,7 +69,7 @@ class PostController extends Controller
     {
         $post = Post::with('author')->findOrFail($id);
 
-        // category này lấy ra category theo id để hiển thị 
+        // category này lấy ra category theo id để hiển thị
         $category = Category::findOrFail($id);
 
         // categories để foreach ra các danh mục
@@ -87,7 +87,7 @@ class PostController extends Controller
 
     public function categories(string $id)
     {
-        // category này lấy ra category theo id để hiển thị 
+        // category này lấy ra category theo id để hiển thị
         $category = Category::findOrFail($id);
 
         // categories để foreach ra các danh mục
