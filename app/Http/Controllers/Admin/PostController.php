@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -28,7 +28,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Validate dữ liệu nhập vào
+         $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'required|exists:categories,id',
+            'view' => 'required|integer',
+            'content' => 'required|string',
+        ]);
+
+        // Upload ảnh
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = $imagePath;
+        }
+
+        // Tạo bài viết mới
+        Post::create($validatedData);
+
+        return redirect()->route('client.home')->with('success', 'Bài viết đã được tạo thành công!');
     }
 
     /**
