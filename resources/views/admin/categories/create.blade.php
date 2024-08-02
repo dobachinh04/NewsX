@@ -57,6 +57,9 @@
                                         <input type="text" name="name" class="form-control input-default "
                                             placeholder="Tên Loại Tin">
                                     </div>
+                                    <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
+                                        Quay Lại</a>
+
                                     <button type="submit" class="btn btn-primary">Thêm Mới</button>
                                 </form>
                             </div>

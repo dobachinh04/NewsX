@@ -10,12 +10,12 @@
             <li class="nav-label">Biểu Đồ Quản Lý</li>
             <li>
                 <a class="" href="{{ route('admin.dashboard') }}" aria-expanded="false"><i
-                        class="fa-solid fa-cube"></i><span class="nav-text">Bảng Thống Kê</span></a>
+                        class="fa-solid fa-chart-line"></i><span class="nav-text">Bảng Thống Kê</span></a>
             </li>
 
             <li class="nav-label">Quản Lý Website</li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-app-store"></i><span class="nav-text">Loại Tin</span></a>
+                        class="fa-solid fa-icons"></i><span class="nav-text">Loại Tin</span></a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.categories.index') }}">Danh Sách Loại Tin</a></li>
                     <li><a href="{{ route('admin.categories.create') }}">Thêm Loại Tin</a></li>
@@ -23,7 +23,7 @@
             </li>
 
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-app-store"></i><span class="nav-text">Tin Tức</span></a>
+                        class="fa-solid fa-newspaper"></i><span class="nav-text">Tin Tức</span></a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.posts.index') }}">Danh Sách Tin Tức</a></li>
                     <li><a href="{{ route('admin.posts.create') }}">Thêm Tin Tức</a></li>
@@ -31,7 +31,7 @@
             </li>
 
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-chart-bar-33"></i><span class="nav-text">Người Dùng</span></a>
+                        class="fa-solid fa-user"></i><span class="nav-text">Người Dùng</span></a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.users.index') }}">Danh Sách Người Dùng</a></li>
                     <li><a href="{{ route('admin.users.create') }}">Thêm Người Dùng</a></li>
