@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Thêm Mới Loại Tin - FlashNews
+    Thêm Mới Loại Tin - NewsX
 @endsection
 
 @section('content')
@@ -30,6 +30,17 @@
                     </ol>
                 </div>
             </div>
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- row -->
             <div class="row">
                 <div class="col-xl-12 col-xxl-12">

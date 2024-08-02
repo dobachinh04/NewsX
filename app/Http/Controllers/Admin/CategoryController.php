@@ -58,7 +58,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.categories.update');
+        $category = Category::findOrFail($id);
+
+        return view('admin.categories.update', ['category' => $category]);
     }
 
     /**
@@ -66,7 +68,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        // Lấy category theo ID và cập nhật dữ liệu
+        $category = Category::findOrFail($id);
+        $category->update([
+            'name' => $request->input('name'),
+        ]);
+
+        // Chuyển hướng về trang danh sách categories với flash session thành công
+        return redirect()->route('admin.categories.index')->with('success', 'Cập nhật thành công');
     }
 
     /**
@@ -74,6 +88,12 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Tìm category theo ID và xóa nó
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        // Chuyển hướng về trang danh sách categories với flash session thành công
+        return redirect()->route('admin.categories.index')->with('success', 'Xóa thành công');
     }
+
 }

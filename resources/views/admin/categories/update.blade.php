@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Cập Nhật Loại Tin - FlashNews
+    Cập Nhật Loại Tin - NewsX
 @endsection
 
 @section('content')
@@ -21,21 +21,40 @@
                     </ol>
                 </div>
             </div>
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- row -->
             <div class="row">
                 <div class="col-xl-12 col-xxl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Thêm Mới Loại Tin</h4>
+                            <h4 class="card-title">Cập Nhật Loại Tin</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
+                                    @csrf
+
+                                    @method('PUT')
+
                                     <div class="form-group">
-                                        <input type="text" class="form-control input-default "
-                                            placeholder="Tên Loại Tin">
+                                        <input type="text" class="form-control input-default " placeholder="Tên Loại Tin"
+                                            value="{{ old('name', $category->name) }}" name="name">
                                     </div>
-                                    <a href="" class="btn btn-primary">Cập Nhật</a>
+
+                                    <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
+                                        Quay Lại</a>
+
+                                    <button type="submit" class="btn btn-warning">Cập Nhật</button>
                                 </form>
                             </div>
                         </div>

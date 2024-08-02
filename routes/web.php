@@ -16,7 +16,7 @@ Route::get('/author/{id}',                          [PostController::class, 'sho
 // Admin:
 Route::get('admin/dashboard',                       [DashboardController::class, 'index'])->name('admin.dashboard');
 
-// Admin - Posts - Category:
+// Admin - Posts - Categories:
 Route::prefix('admin/categories')->name('admin.categories.')->group(function() {
     Route::get('/',                                 [CategoryController::class, 'index'])->name('index');
     Route::get('/create',                           [CategoryController::class, 'create'])->name('create');

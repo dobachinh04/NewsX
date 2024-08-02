@@ -69,7 +69,7 @@
                                 <div class="single-blog-post style-1 mb-30" data-animation="fadeInUpBig" data-delay="300ms"
                                     data-duration="1000ms">
                                     <!-- Blog Thumbnail -->
-                                    <div class="blog-thumbnail bg-overlay">
+                                    <div class="blog-thumbnail">
                                         <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
                                                 src="{{ asset('storage/images/' . $post->image) }}"
                                                 style="width: 900px; height: 340px; object-fit: cover;" alt=""></a>

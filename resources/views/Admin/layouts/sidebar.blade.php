@@ -26,15 +26,15 @@
                         class="icon icon-app-store"></i><span class="nav-text">Tin Tức</span></a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.posts.index') }}">Danh Sách Tin Tức</a></li>
-                    <li><a href="./app-calender.html">Thêm Tin Tức</a></li>
+                    <li><a href="{{ route('admin.posts.create') }}">Thêm Tin Tức</a></li>
                 </ul>
             </li>
 
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="icon icon-chart-bar-33"></i><span class="nav-text">Người Dùng</span></a>
                 <ul aria-expanded="false">
-                    <li><a href="./chart-flot.html">Danh Sách Người Dùng</a></li>
-                    <li><a href="./chart-morris.html">Thêm Người Dùng</a></li>
+                    <li><a href="{{ route('admin.users.index') }}">Danh Sách Người Dùng</a></li>
+                    <li><a href="{{ route('admin.users.create') }}">Thêm Người Dùng</a></li>
                 </ul>
             </li>
         </ul>

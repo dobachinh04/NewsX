@@ -11,15 +11,6 @@
     <link href="/focus-2/css/style.css" rel="stylesheet">
 
     <body>
-        @if (Session::has('success'))
-            <div class="alert alert-success solid alert-dismissible fade show">
-                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i
-                            class="mdi mdi-close"></i></span>
-                </button>
-                <strong>Success!</strong> {{ Session::get('success') }}.
-            </div>
-        @endif
-
         <div class="content-body">
             <div class="container-fluid">
                 <div class="row page-titles mx-0">
@@ -35,6 +26,15 @@
                         </ol>
                     </div>
                 </div>
+
+                @if (Session::has('success'))
+                    <div class="alert alert-success solid alert-dismissible fade show">
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i
+                                    class="mdi mdi-close"></i></span>
+                        </button>
+                        <strong>Hoàn Tất!</strong> {{ Session::get('success') }}.
+                    </div>
+                @endif
 
                 <div class="row">
                     <div class="col-12">
@@ -62,9 +62,17 @@
                                                     <td>{{ $category->created_at }}</td>
                                                     <td>{{ $category->updated_at }}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.categories.update', ['id' => $category->id]) }}"
+                                                        <a href="{{ route('admin.categories.edit', ['id' => $category->id]) }}"
                                                             class="btn btn-warning">Sửa</a>
-                                                        <a href="" class="btn btn-danger">Xóa</a>
+                                                        <form
+                                                            action="{{ route('admin.categories.destroy', ['id' => $category->id]) }}"
+                                                            method="POST" style="display:inline;"
+                                                            onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                                                            @csrf
+
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
