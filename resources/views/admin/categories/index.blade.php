@@ -41,7 +41,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Danh Mục Loại Tin</h4>
-                                <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Thêm Mới</a>
+                                <a href="{{ route('admin.categories.create') }}" class="btn btn-success">Thêm Mới</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

@@ -28,11 +28,21 @@
                 </div>
                 <!-- row -->
 
+                @if (Session::has('success'))
+                    <div class="alert alert-success solid alert-dismissible fade show">
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i
+                                    class="mdi mdi-close"></i></span>
+                        </button>
+                        <strong>Hoàn Tất!</strong> {{ Session::get('success') }}.
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Danh Sách Bài Viết</h4>
+                                <a href="{{ route('admin.posts.create') }}" class="btn btn-success">Thêm Mới</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -44,6 +54,7 @@
                                                 <th>Danh Mục</th>
                                                 <th>Ảnh</th>
                                                 <th>Lượt Xem</th>
+                                                <th>Tác Giả</th>
                                                 <th>Tạo Ngày</th>
                                                 <th>Lần Cuối Cập Nhật</th>
                                                 <th>Hành Động</th>
@@ -54,18 +65,26 @@
                                                 <tr>
                                                     <td>{{ $post->id }}</td>
                                                     <td>{{ $post->title }}</td>
-                                                    <td><img
-                                                        src="{{ asset('storage/images/' . $post->image) }}"
-                                                        style="width: 100px; " alt="">
+                                                    <td><img src="{{ asset('storage/images/' . $post->image) }}"
+                                                            style="width: 100px; " alt="">
                                                     </td>
-                                                    <td>{{ $post->category_id }}</td>
+                                                    <td>{{ $post->category->name }}</td>
                                                     <td>{{ $post->view }}</td>
+                                                    <td>{{ $post->author->name }}</td>
                                                     <td>{{ $post->created_at }}</td>
                                                     <td>{{ $post->updated_at }}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-primary">Chi Tiết</a>
-                                                        <a href="" class="btn btn-warning">Sửa</a>
-                                                        <a href="" class="btn btn-danger">Xóa</a>
+                                                        <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}" class="btn btn-primary">Chi Tiết</a>
+                                                        <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}"
+                                                            class="btn btn-warning">Sửa</a>
+                                                        <form
+                                                            action="{{ route('admin.posts.destroy', ['id' => $post->id]) }}"
+                                                            method="POST" style="display:inline;"
+                                                            onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

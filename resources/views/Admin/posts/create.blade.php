@@ -41,7 +41,8 @@
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('admin.posts.store') }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="row">
@@ -65,6 +66,10 @@
                                         </div>
 
                                         <div class="col-6">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung" name="content"></textarea>
+                                            </div>
+
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Tải
@@ -76,14 +81,12 @@
                                                     <label class="custom-file-label">Chọn Ảnh</label>
                                                 </div>
                                             </div>
-
-                                            <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung" name="content"></textarea>
-                                            </div>
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary">Thêm Mới</button>
+                                    <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">
+                                        Quay Lại</a>
+                                    <button type="submit" class="btn btn-success">Thêm Mới</button>
                                 </form>
                             </div>
                         </div>
