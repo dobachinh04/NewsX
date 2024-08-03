@@ -21,6 +21,17 @@
                     </ol>
                 </div>
             </div>
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- row -->
             <div class="row">
                 <div class="col-xl-12 col-xxl-12">
@@ -30,20 +41,22 @@
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control input-default"
-                                                    placeholder="Tiêu Đề">
+                                                    placeholder="Tiêu Đề" name="title">
                                             </div>
 
                                             <div class="form-group">
-                                                <select class="form-control">
+                                                <select class="form-control" name="category_id">
                                                     <option selected disabled>Chọn Loại Tin</option>
-                                                    <option>Option 1</option>
-                                                    <option>Option 2</option>
-                                                    <option>Option 3</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 
@@ -54,16 +67,18 @@
                                         <div class="col-6">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text">Tải Lên</span>
+                                                    <span class="input-group-text">Tải
+                                                        Lên</span>
                                                 </div>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input">
+                                                    <input type="file" class="custom-file-input" name="image"
+                                                        accept="image/*">
                                                     <label class="custom-file-label">Chọn Ảnh</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung"></textarea>
+                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung" name="content"></textarea>
                                             </div>
                                         </div>
                                     </div>

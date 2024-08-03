@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::get();
+
+        return view('admin.posts.create', ['categories' => $categories]);
     }
 
     /**
@@ -28,25 +31,35 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate dữ liệu nhập vào
-        $validatedData = $request->validate([
+        // Validate the request data
+        $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable',
             'category_id' => 'required|exists:categories,id',
-            'view' => 'required|integer',
             'content' => 'required|string',
+            'author_id' => 'nullable',
         ]);
 
-        // Upload ảnh
+        // Handle the file upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
-            $validatedData['image'] = $imagePath;
+            $imagePath = $request->file('image')->store('public/images');
+            $imageName = basename($imagePath);
+        } else {
+            $imageName = null; // Set null nếu không có ảnh
         }
 
-        // Tạo bài viết mới
-        Post::create($validatedData);
+        // Tạo post mới
+        Post::create([
+            'title' => $request->input('title'),
+            'image' => $imageName,
+            'category_id' => $request->input('category_id'),
+            'content' => $request->input('content'),
+            // 'author_id' => auth()->id(),
+            'author_id' => 1,
+            'view' => 0,
+        ]);
 
-        return redirect()->route('client.home')->with('success', 'Bài viết đã được tạo thành công!');
+        return redirect()->route('admin.posts.index')->with('success', 'Bài viết đã được tạo thành công.');
     }
 
     /**

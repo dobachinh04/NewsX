@@ -11,10 +11,6 @@
     <link href="/focus-2/css/style.css" rel="stylesheet">
 
     <body>
-
-        <!--**********************************
-                                                            Content body start
-                                                        ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
                 <div class="row page-titles mx-0">
@@ -58,7 +54,10 @@
                                                 <tr>
                                                     <td>{{ $post->id }}</td>
                                                     <td>{{ $post->title }}</td>
-                                                    <td>{{ $post->image }}</td>
+                                                    <td><img
+                                                        src="{{ asset('storage/images/' . $post->image) }}"
+                                                        style="width: 100px; " alt="">
+                                                    </td>
                                                     <td>{{ $post->category_id }}</td>
                                                     <td>{{ $post->view }}</td>
                                                     <td>{{ $post->created_at }}</td>
@@ -91,13 +90,7 @@
                 </div>
             </div>
         </div>
-        <!--**********************************
-                                                            Content body end
-                                                        ***********************************-->
 
-        <!--**********************************
-                                                        Scripts
-                                                    ***********************************-->
         <!-- Required vendors -->
         <script src="/focus-2/vendor/global/global.min.js"></script>
         <script src="/focus-2/js/quixnav-init.js"></script>
