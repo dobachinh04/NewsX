@@ -66,15 +66,17 @@
                                                     <td>{{ $post->id }}</td>
                                                     <td>{{ $post->title }}</td>
                                                     <td><img src="{{ asset('storage/images/' . $post->image) }}"
-                                                            style="width: 100px; " alt="">
+                                                            style="width: 100px; height: 75px; object-fit: cover;"
+                                                            alt="">
                                                     </td>
                                                     <td>{{ $post->category->name }}</td>
                                                     <td>{{ $post->view }}</td>
                                                     <td>{{ $post->author->name }}</td>
-                                                    <td>{{ $post->created_at }}</td>
-                                                    <td>{{ $post->updated_at }}</td>
+                                                    <td>{{ $post->created_at->format('d/m/Y H:i') }}</td>
+                                                    <td>{{ $post->updated_at->format('d/m/Y H:i') }}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}" class="btn btn-primary">Chi Tiết</a>
+                                                        <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}"
+                                                            class="btn btn-primary">Chi Tiết</a>
                                                         <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}"
                                                             class="btn btn-warning">Sửa</a>
                                                         <form
