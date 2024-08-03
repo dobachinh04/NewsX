@@ -1,7 +1,7 @@
 <div class="quixnav">
     <div class="quixnav-scroll">
         <ul class="metismenu" id="menu">
-            <li class="nav-label first">Trang Chủ</li>
+            <li class="nav-label first">Trang Admin</li>
             <li>
                 <a class="" href="{{ route('admin.dashboard') }}" aria-expanded="false"><i
                         class="fa-solid fa-cube"></i><span class="nav-text">Bảng Điều Khiển</span></a>
@@ -36,6 +36,12 @@
                     <li><a href="{{ route('admin.users.index') }}">Danh Sách Người Dùng</a></li>
                     <li><a href="{{ route('admin.users.create') }}">Thêm Người Dùng</a></li>
                 </ul>
+            </li>
+
+            <li class="nav-label">Điều Hướng</li>
+            <li>
+                <a class="" href="{{ route('client.home') }}" aria-expanded="false"><i
+                        class="fa-solid fa-door-open"></i><span class="nav-text">Quay Về Trang Chủ</span></a>
             </li>
         </ul>
     </div>

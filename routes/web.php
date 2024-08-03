@@ -39,9 +39,14 @@ Route::prefix('admin/posts')->name('admin.posts.')->group(function() {
 });
 
 // Admin - Users:
-Route::get('admin/users',                           [UserController::class, 'index'])->name('admin.users.index');
-Route::get('admin/users/create',                    [UserController::class, 'create'])->name('admin.users.create');
-Route::get('admin/users/update/{id}',               [UserController::class, 'update'])->name('admin.users.update');
-Route::get('admin/users/show/{id}',                 [UserController::class, 'show'])->name('admin.users.show');
+Route::prefix('admin/users')->name('admin.users.')->group(function() {
+    Route::get('/',                                 [UserController::class, 'index'])->name('index');
+    Route::get('/create',                           [UserController::class, 'create'])->name('create');
+    Route::post('/',                                [UserController::class, 'store'])->name('store');
+    Route::get('/{id}/edit',                        [UserController::class, 'edit'])->name('edit');
+    Route::put('/{id}',                             [UserController::class, 'update'])->name('update');
+    Route::get('/show/{id}',                        [UserController::class, 'show'])->name('show');
+    Route::delete('/{id}',                          [UserController::class, 'destroy'])->name('destroy');
+});
 
 // Route::get('/', PostController::class .'@index')->name('posts.index');
