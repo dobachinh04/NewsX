@@ -47,7 +47,6 @@ class PostController extends Controller
             'author_id' => 'nullable',
         ]);
 
-        // Handle the file upload
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images');
             $imageName = basename($imagePath);
@@ -66,7 +65,7 @@ class PostController extends Controller
             'view' => 0,
         ]);
 
-        return redirect()->route('admin.posts.index')->with('success', 'Thêm thành công.');
+        return redirect()->route('admin.posts.index')->with('success', 'Thêm thành công');
     }
 
     /**
@@ -138,7 +137,7 @@ class PostController extends Controller
             'author_id' => $request->input('author_id') ?? $post->author_id, // Giữ nguyên author_id nếu không có thay đổi
         ]);
 
-        return redirect()->route('admin.posts.index')->with('success', 'Cập nhật thành công.');
+        return redirect()->route('admin.posts.index')->with('success', 'Cập nhật thành công');
     }
 
     /**
@@ -152,6 +151,6 @@ class PostController extends Controller
         $post->delete();
 
         // Chuyển hướng về trang danh sách bài viết với thông báo thành công
-        return redirect()->route('admin.posts.index')->with('success', 'Xóa thành công.');
+        return redirect()->route('admin.posts.index')->with('success', 'Xóa thành công');
     }
 }

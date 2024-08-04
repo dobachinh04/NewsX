@@ -42,7 +42,7 @@ class CategoryController extends Controller
         ]);
 
         // Chuyển hướng về index category và truyền thêm flash session success
-        return redirect()->route('admin.categories.index')->with('success', 'Thêm thành công.');
+        return redirect()->route('admin.categories.index')->with('success', 'Thêm thành công');
     }
 
     /**

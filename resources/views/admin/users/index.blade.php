@@ -28,11 +28,21 @@
                 </div>
                 <!-- row -->
 
+                @if (Session::has('success'))
+                    <div class="alert alert-success solid alert-dismissible fade show">
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i
+                                    class="mdi mdi-close"></i></span>
+                        </button>
+                        <strong>Hoàn Tất!</strong> {{ Session::get('success') }}.
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Danh Sách Người Dùng</h4>
+                                <a href="{{ route('admin.users.create') }}" class="btn btn-success">Thêm Mới</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -42,6 +52,7 @@
                                                 <th>ID</th>
                                                 <th>Họ Tên</th>
                                                 <th>Email</th>
+                                                <th>Ảnh</th>
                                                 <th>Vai Trò</th>
                                                 <th>Tạo Ngày</th>
                                                 <th>Lần Cuối Cập Nhật</th>
@@ -54,13 +65,29 @@
                                                     <td>{{ $user->id }}</td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->role_id }}</td>
+                                                    <td>
+                                                        <img src="{{ asset('storage/images/' . $user->image) }}"
+                                                            style="width: 75px; height: 75px; object-fit: cover"
+                                                            alt="Ảnh Người Dùng">
+                                                    </td>
+                                                    <td>{{ $user->role->name }}</td>
                                                     <td>{{ $user->created_at }}</td>
                                                     <td>{{ $user->updated_at }}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-primary">Chi Tiết</a>
-                                                        <a href="" class="btn btn-warning">Sửa</a>
-                                                        <a href="" class="btn btn-danger">Xóa</a>
+                                                        <a href="{{ route('admin.users.show', ['id' => $user->id]) }}"
+                                                            class="btn btn-primary">Chi Tiết</a>
+                                                        <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}"
+                                                            class="btn btn-warning">Sửa</a>
+
+                                                        <form
+                                                            action="{{ route('admin.users.destroy', ['id' => $user->id]) }}"
+                                                            method="POST" style="display: inline;"
+                                                            onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

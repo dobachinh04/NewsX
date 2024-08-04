@@ -17,7 +17,7 @@
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Tin Tức</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm Mới Tin Tức</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Chi Tiết Tin Tức</a></li>
                     </ol>
                 </div>
             </div>

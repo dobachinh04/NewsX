@@ -90,7 +90,7 @@
 
                                             @if ($post->image)
                                                 <img class="mb-3" src="{{ asset('storage/images/' . $post->image) }}"
-                                                    style="width: 100px;" alt="Current Image">
+                                                    style="width: 100px;" alt="Ảnh Cũ">
                                             @endif
                                         </div>
                                     </div>
