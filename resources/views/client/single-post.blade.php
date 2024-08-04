@@ -16,7 +16,8 @@
                         <p class="post-title">{{ $post->title }}</p>
                         <div class="d-flex align-items-center">
                             <span class="post-date mr-30">{{ $post->created_at->format('F d, Y') }}</span>
-                            <a href="{{ route('client.author', ['id' => $post->id]) }}"><span class="post-date">Tác Giả:
+                            <a href="{{ route('client.author', ['id' => $post->author->id]) }}"><span class="post-date">Tác
+                                    Giả:
                                     {{ $post->author->name }}</span></a>
                         </div>
                     </div>

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 // Client Views:
 Route::get('/',                                         [PostController::class, 'index'])->name('client.home');
 Route::get('/categories/{id}',                          [PostController::class, 'categories'])->name('client.category');
+Route::get('/author/{id}',                              [PostController::class, 'author'])->name('client.author');
 Route::get('/show/{id}',                                [PostController::class, 'show'])->name('client.show');
-Route::get('/author/{id}',                              [PostController::class, 'show'])->name('client.author');
 
 // Client - Login - Register:
 // Display View:
@@ -32,6 +32,7 @@ Route::post('/logout',                                  [AuthenticationControlle
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function() {
     // Admin - Dashboard:
     Route::get('/admin/dashboard',                      [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin/chart',                          [DashboardController::class, 'chart'])->name('chart');
 
     // Admin - Posts Categories:
     Route::prefix('categories')->name('categories.')->middleware('auth')->group(function() {

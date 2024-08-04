@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -105,6 +106,29 @@ class PostController extends Controller
             'latestPostsComponent' => $latestPostsComponent,
         ]);
     }
+
+    public function author(string $id)
+    {
+        // Lấy thông tin tác giả
+        $author = User::findOrFail($id);
+
+        // Lấy tất cả các danh mục để hiển thị
+        $categories = Category::all();
+
+        // Lấy các bài viết thuộc về tác giả này
+        $posts = Post::where('author_id', $id)->get();
+
+        // Lấy 5 bài viết mới nhất để hiển thị
+        $latestPostsComponent = Post::orderBy('created_at', 'desc')->take(5)->get();
+
+        return view('client.author', [
+            'author' => $author,
+            'categories' => $categories,
+            'posts' => $posts,
+            'latestPostsComponent' => $latestPostsComponent,
+        ]);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

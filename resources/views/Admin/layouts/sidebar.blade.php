@@ -9,7 +9,7 @@
 
             <li class="nav-label">Biểu Đồ Quản Lý</li>
             <li>
-                <a class="" href="{{ route('admin.dashboard') }}" aria-expanded="false"><i
+                <a class="" href="{{ route('admin.chart') }}" aria-expanded="false"><i
                         class="fa-solid fa-chart-line"></i><span class="nav-text">Bảng Thống Kê</span></a>
             </li>
 
