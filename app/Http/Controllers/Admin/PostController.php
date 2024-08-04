@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -30,7 +31,16 @@ class PostController extends Controller
     {
         $categories = Category::get();
 
-        return view('admin.posts.create', ['categories' => $categories]);
+        // Lấy thông tin người dùng đang đăng nhập
+        $user = Auth::user();
+
+        return view(
+            'admin.posts.create',
+            [
+                'categories' => $categories,
+                'user' => $user,
+            ]
+        );
     }
 
     /**
@@ -44,7 +54,6 @@ class PostController extends Controller
             'image' => 'nullable',
             'category_id' => 'required|exists:categories,id',
             'content' => 'required|string',
-            'author_id' => 'nullable',
         ]);
 
         if ($request->hasFile('image')) {
@@ -61,7 +70,7 @@ class PostController extends Controller
             'category_id' => $request->input('category_id'),
             'content' => $request->input('content'),
             // 'author_id' => auth()->id(),
-            'author_id' => 1,
+            'author_id' => auth()->id(),
             'view' => 0,
         ]);
 

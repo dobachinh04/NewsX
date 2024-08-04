@@ -5,6 +5,27 @@
 @endsection
 
 @section('content')
+    <div class="container-fluid">
+        @if (Session::has('success'))
+            <div class="alert alert-success solid alert-dismissible fade show">
+                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i
+                            class="mdi mdi-close"></i></span>
+                </button>
+                <strong>Hoàn Tất!</strong> {{ Session::get('success') }}.
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
+
     <!-- ##### Breaking News Area Start ##### -->
     <section class="breaking-news-area">
         <div class="container-fluid">

@@ -51,7 +51,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -67,10 +67,10 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::with('author')->findOrFail($id);
+        $post = Post::with('author', 'category')->findOrFail($id);
 
         // category này lấy ra category theo id để hiển thị
-        $category = Category::findOrFail($id);
+        $category = $post->category;
 
         // categories để foreach ra các danh mục
         $categories = Category::all();

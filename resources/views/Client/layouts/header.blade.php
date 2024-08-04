@@ -128,8 +128,35 @@
 
                                     <li><a href="#">Liên Hệ</a></li>
 
-                                    <li><a href="{{ route('admin.dashboard') }}"><i class="fa-regular fa-user"></i></a>
-                                    </li>
+                                    @if (session('user'))
+                                        <li>
+                                            <span class="user-name">Chào
+                                                <strong>{{ session('user')->name }}!</strong></span>
+                                        </li>
+
+                                        @if (session('user')->role_id == 1)
+                                            <!-- Hiển thị tùy chọn admin -->
+                                            <li>
+                                                <a href="{{ route('admin.dashboard') }}"><i
+                                                        class="fa-solid fa-gear"></i></a>
+                                            </li>
+                                        @endif
+
+                                        <!-- Hiển thị icon đăng xuất khi đã đăng nhập -->
+                                        <li>
+                                            <form action="{{ route('client.logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-link"><i
+                                                        class="fa-solid fa-door-open"></i></button>
+                                            </form>
+                                        </li>
+                                    @else
+                                        <!-- Hiển thị icon đăng nhập khi chưa đăng nhập -->
+                                        <li>
+                                            <a href="{{ route('client.login') }}"><i class="fa-regular fa-user"></i></a>
+                                        </li>
+                                    @endif
+
 
                                     <li><input type="text" class="form-control" style="height: 22px"
                                             placeholder="Tìm Kiếm..."></li>

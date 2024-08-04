@@ -61,7 +61,7 @@
                                                 </select>
                                             </div>
 
-                                            <input type="text" class="form-control input-default" value="Tác Giả: "
+                                            <input type="text" class="form-control input-default" value="Tác Giả: {{ $user->name }}"
                                                 disabled>
                                         </div>
 
