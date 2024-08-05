@@ -12,10 +12,10 @@
     </div>
 
     <!-- Add Widget -->
-    <div class="single-widget-area add-widget mb-30">
+    {{-- <div class="single-widget-area add-widget mb-30">
         <a href="#">
             <img src="./newsbox-master/img/bg-img/add3.png" alt="">
         </a>
-    </div>
+    </div> --}}
 
 </div>

@@ -19,6 +19,12 @@ class PostController extends Controller
         $latestPosts = $posts->take(2); // 2 bài viết mới nhất
         $otherPosts = $posts->slice(2);  // 6 bài viết còn lại
 
+        // Lấy bài viết có lượt xem nhiều nhất
+        $most2ViewedPost = Post::orderBy('view', 'desc')->take(2)->get();
+
+        // Lấy 6 bài viết có lượt xem nhiều nhất, bỏ qua 2 bài đã lấy ở trên
+        $most6ViewedPost = Post::orderBy('view', 'desc')->skip(2)->take(6)->get();
+
         // Lấy các danh mục để hiển thị trên dropdown menu header
         $categories = Category::all();
 
@@ -35,6 +41,15 @@ class PostController extends Controller
         // Lấy 3 bài viết có lượt xem nhiều nhất
         $trendingPosts = Post::orderBy('view', 'desc')->take(3)->get();
 
+        // Lấy bài viết có lượt xem nhiều nhất
+        $most1ViewedPost = Post::orderBy('view', 'desc')->take(1)->get();
+
+        // Lấy 5 bài viết ngẫu nhiên
+        $random5Posts = Post::inRandomOrder()->take(5)->get();
+
+        // Lấy 9 bài viết ngẫu nhiên
+        $random9Posts = Post::inRandomOrder()->take(9)->get();
+
         // Trả dữ liệu đến view 'home'
         return view('client.home', [
             'categories' => $categories,
@@ -44,6 +59,11 @@ class PostController extends Controller
             'slideCategories' => $slideCategories,
             'largePost' => $largePost,
             'smallPosts' => $smallPosts,
+            'most1ViewedPost' => $most1ViewedPost,
+            'most2ViewedPost' => $most2ViewedPost,
+            'most6ViewedPost' => $most6ViewedPost,
+            'random5Posts' => $random5Posts,
+            'random9Posts' => $random9Posts,
         ]);
     }
 

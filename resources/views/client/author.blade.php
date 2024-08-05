@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 
 @section('title')
-    {{ $author->name }}
+    Tin Của Tác Giả: {{ $author->name }} - NewsX
 @endsection
 
 @section('content')
@@ -37,17 +37,17 @@
 
                         <!-- Intro News Filter -->
                         <div class="intro-news-filter d-flex justify-content-between">
-                            <h6>Danh Mục Tin - {{ $author->name }}</h6>
+                            <h6>Tin Của Tác Giả - {{ $author->name }}</h6>
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav1" data-toggle="tab" href="#nav-1"
                                         role="tab" aria-controls="nav-1" aria-selected="true">Mới Nhất</a>
                                     <a class="nav-item nav-link" id="nav2" data-toggle="tab" href="#nav-2"
-                                        role="tab" aria-controls="nav-2" aria-selected="false">Hot Nhất</a>
-                                    <a class="nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3"
+                                        role="tab" aria-controls="nav-2" aria-selected="false">Nhiều Views Nhất</a>
+                                    {{-- <a class="nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3"
                                         role="tab" aria-controls="nav-3" aria-selected="false">Cũ Nhất</a>
                                     <a class="nav-item nav-link" id="nav4" data-toggle="tab" href="#nav-4"
-                                        role="tab" aria-controls="nav-4" aria-selected="false">Nhiều Bình Luận Nhất</a>
+                                        role="tab" aria-controls="nav-4" aria-selected="false">Nhiều Bình Luận Nhất</a> --}}
                                 </div>
                             </nav>
                         </div>
@@ -81,27 +81,28 @@
 
                                     <!-- Single News Area -->
                                     @foreach ($posts as $post)
-                                    <div class="col-12 col-sm-6 mb-4">
-                                        <div class="single-blog-post style-2">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="{{ route('client.show', ['id' => $post->id]) }}">
-                                                    <img src="{{ asset('storage/images/' . $post->image) }}"
-                                                         style="width: 350px; height: 240px; object-fit: cover;" alt="">
-                                                </a>
-                                            </div>
+                                        <div class="col-12 col-sm-6 mb-4">
+                                            <div class="single-blog-post style-2">
+                                                <!-- Blog Thumbnail -->
+                                                <div class="blog-thumbnail">
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}">
+                                                        <img src="{{ asset('storage/images/' . $post->image) }}"
+                                                            style="width: 350px; height: 240px; object-fit: cover;"
+                                                            alt="">
+                                                    </a>
+                                                </div>
 
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
-                                                <a href="{{ route('client.show', ['id' => $post->id]) }}"
-                                                   class="post-title">{{ $post->title }}</a>
-                                                <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
-                                                   class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                                <!-- Blog Content -->
+                                                <div class="blog-content">
+                                                    <span class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-title">{{ $post->title }}</a>
+                                                    <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                                        class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
 
                                 </div>
                             </div>

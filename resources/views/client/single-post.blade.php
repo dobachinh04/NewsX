@@ -46,12 +46,12 @@
                             ultrices nec tortor et gravida. Sed id rhoncus est. Interdum et malesuada fames ac ante ipsum
                             primis in faucibus. Curabitur vitae luctus turpis. Maecenas diam ex, mattis vel dolor ut,
                             fermentum consectetur ex. </p>
-                        <h5 class="mb-30">A good news after all</h5>
+                        {{-- <h5 class="mb-30">A good news after all</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit nisl, faucibus eu tempus vel,
                             imperdiet at felis. Sed sed nibh et augue feugiat pharetra. Praesent ultrices nec tortor et
                             gravida. Sed id rhoncus est. Interdum et malesuada fames ac ante ipsum primis in faucibus.
                             Curabitur vitae luctus turpis. Maecenas diam ex, mattis vel dolor ut, fermentum consectetur ex.
-                        </p>
+                        </p> --}}
                     </div>
 
                     <!-- Comment Area Start -->

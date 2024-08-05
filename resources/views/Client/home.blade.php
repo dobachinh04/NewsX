@@ -180,15 +180,15 @@
 
                         <!-- Intro News Filter -->
                         <div class="intro-news-filter d-flex justify-content-between">
-                            <h6>Tất cả các tin tức</h6>
+                            <h6>Tin tức - NewsX</h6>
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav1" data-toggle="tab" href="#nav-1"
                                         role="tab" aria-controls="nav-1" aria-selected="true">Mới Nhất</a>
                                     <a class="nav-item nav-link" id="nav2" data-toggle="tab" href="#nav-2"
-                                        role="tab" aria-controls="nav-2" aria-selected="false">Hot Nhất</a>
-                                    <a class="nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3"
-                                        role="tab" aria-controls="nav-3" aria-selected="false">Nhiều Bình Luận Nhất</a>
+                                        role="tab" aria-controls="nav-2" aria-selected="false">Nhiều Views Nhất</a>
+                                    {{-- <a class="nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3"
+                                        role="tab" aria-controls="nav-3" aria-selected="false">Nhiều Bình Luận Nhất</a> --}}
                                 </div>
                             </nav>
                         </div>
@@ -242,8 +242,8 @@
                                                         class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                                         class="post-title">{{ $post->title }}</a>
-                                                    <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
-                                                        class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                                    {{-- <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                                        class="post-author">Tác Giả: {{ $post->author->name }}</a> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -255,150 +255,54 @@
                             <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav2">
                                 <div class="row">
                                     <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post style-2 mb-5">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/4.jpg"
-                                                        alt=""></a>
-                                            </div>
+                                    @foreach ($most2ViewedPost as $post)
+                                        <div class="col-12 col-sm-6">
+                                            <div class="single-blog-post style-2 mb-5">
+                                                <!-- Blog Thumbnail -->
+                                                <div class="blog-thumbnail">
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
+                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            style="width: 350px; height: 240px; object-fit: cover;"
+                                                            alt=""></a>
+                                                </div>
 
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Elon Musk: Tesla worker admitted
-                                                    to sabotage</a>
-                                                <a href="#" class="post-author">By Michael Smith</a>
+                                                <!-- Blog Content -->
+                                                <div class="blog-content">
+                                                    <span
+                                                        class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-title">{{ $post->title }}</a>
+                                                    <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                                        class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
 
                                     <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post style-2 mb-5">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/5.jpg"
-                                                        alt=""></a>
-                                            </div>
+                                    @foreach ($most6ViewedPost as $post)
+                                        <div class="col-12 col-sm-6">
+                                            <div class="single-blog-post d-flex style-4 mb-30">
+                                                <!-- Blog Thumbnail -->
+                                                <div class="blog-thumbnail">
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
+                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            style="width: 120px; height: 90px; object-fit: cover;"
+                                                            alt=""></a>
+                                                </div>
 
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Rachel Sm ith breaks down while
-                                                    discussing border crisis</a>
-                                                <a href="#" class="post-author">By Michael Smith</a>
+                                                <!-- Blog Content -->
+                                                <div class="blog-content">
+                                                    <span
+                                                        class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-title">{{ $post->title }}</a>
+                                                    {{-- <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                                        class="post-author">Tác Giả: {{ $post->author->name }}</a> --}}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/16.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no
-                                                    emergency savings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/17.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no
-                                                    emergency savings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/18.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over
-                                                    $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/19.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over
-                                                    $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/20.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war
-                                                    fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="./newsbox-master/img/bg-img/21.jpg"
-                                                        alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war
-                                                    fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -551,7 +455,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -573,11 +476,15 @@
                 <!-- Featured Video Area -->
                 <div class="col-12">
                     <div class="featured-video-area d-flex align-items-center justify-content-center">
-                        <div class="video-content text-center">
-                            <a href="#" class="video-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                            <span class="published-date">June 20, 2018</span>
-                            <h3 class="video-title">Traffic Problems in Time Square</h3>
-                        </div>
+                        @foreach ($most1ViewedPost as $post)
+                            <div class="video-content text-center">
+                                {{-- <a href="#" class="video-btn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
+                                <span class="published-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                <a href="{{ route('client.show', ['id' => $post->id]) }}" class="post-title">
+                                    <h3 class="video-title">{{ $post->title }}</h3>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -590,109 +497,29 @@
                     <div class="col-12">
                         <!-- Video Slides -->
                         <div class="video-slides owl-carousel">
-
                             <!-- Single News Area -->
-                            <div class="single-blog-post style-3">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/11.jpg" alt=""></a>
-                                    <a href="#" class="video-btn"><i class="fa fa-play"
-                                            aria-hidden="true"></i></a>
-                                </div>
+                            @foreach ($random5Posts as $post)
+                                <div class="single-blog-post style-3">
+                                    <!-- Blog Thumbnail -->
+                                    <div class="blog-thumbnail">
+                                        <a href="{{ route('client.show', ['id' => $post->id]) }}">
+                                            <img src="{{ asset('storage/images/' . $post->image) }}"
+                                                style="width: 350px; height: 240px; object-fit: cover" alt="">
+                                        </a>
+                                        {{-- <a href="#" class="video-btn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
+                                    </div>
 
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <p class="post-title">Elon Musk: Tesla worker admitted to sabotage</p>
-                                    <a href="#" class="post-author">By Michael Smith</a>
+                                    <!-- Blog Content -->
+                                    <div class="blog-content">
+                                        <span class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                        <a href="{{ route('client.show', ['id' => $post->id]) }}">
+                                            <p class="post-title">{{ $post->title }}</p>
+                                        </a>
+                                        <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                            class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <!-- Single News Area -->
-                            <div class="single-blog-post style-3">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/12.jpg" alt=""></a>
-                                    <a href="#" class="video-btn"><i class="fa fa-play"
-                                            aria-hidden="true"></i></a>
-                                </div>
-
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <p class="post-title">Rachel Sm ith breaks down while discussing border crisis </p>
-                                    <a href="#" class="post-author">By Michael Smith</a>
-                                </div>
-                            </div>
-
-                            <!-- Single News Area -->
-                            <div class="single-blog-post style-3">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/13.jpg" alt=""></a>
-                                    <a href="#" class="video-btn"><i class="fa fa-play"
-                                            aria-hidden="true"></i></a>
-                                </div>
-
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <p class="post-title">Dow falls 287 points as trade war fears escalate</p>
-                                    <a href="#" class="post-author">By Michael Smith</a>
-                                </div>
-                            </div>
-
-                            <!-- Single News Area -->
-                            <div class="single-blog-post style-3">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/11.jpg" alt=""></a>
-                                    <a href="#" class="video-btn"><i class="fa fa-play"
-                                            aria-hidden="true"></i></a>
-                                </div>
-
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <p class="post-title">Elon Musk: Tesla worker admitted to sabotage</p>
-                                    <a href="#" class="post-author">By Michael Smith</a>
-                                </div>
-                            </div>
-
-                            <!-- Single News Area -->
-                            <div class="single-blog-post style-3">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/12.jpg" alt=""></a>
-                                    <a href="#" class="video-btn"><i class="fa fa-play"
-                                            aria-hidden="true"></i></a>
-                                </div>
-
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <p class="post-title">Rachel Sm ith breaks down while discussing border crisis </p>
-                                    <a href="#" class="post-author">By Michael Smith</a>
-                                </div>
-                            </div>
-
-                            <!-- Single News Area -->
-                            <div class="single-blog-post style-3">
-                                <!-- Blog Thumbnail -->
-                                <div class="blog-thumbnail">
-                                    <a href="#"><img src="./newsbox-master/img/bg-img/13.jpg" alt=""></a>
-                                    <a href="#" class="video-btn"><i class="fa fa-play"
-                                            aria-hidden="true"></i></a>
-                                </div>
-
-                                <!-- Blog Content -->
-                                <div class="blog-content">
-                                    <span class="post-date">June 20, 2018</span>
-                                    <p class="post-title">Dow falls 287 points as trade war fears escalate</p>
-                                    <a href="#" class="post-author">By Michael Smith</a>
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -705,117 +532,34 @@
     <div class="top-news-area section-padding-100">
         <div class="container">
             <div class="row">
-
                 <!-- Single News Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-blog-post style-2 mb-5">
-                        <!-- Blog Thumbnail -->
-                        <div class="blog-thumbnail">
-                            <a href="#"><img src="./newsbox-master/img/bg-img/4.jpg" alt=""></a>
+                @foreach ($random9Posts as $post)
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-blog-post style-2 mb-5">
+                            <!-- Blog Thumbnail -->
+                            <div class="blog-thumbnail">
+                                <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
+                                        src="{{ asset('storage/images/' . $post->image) }}"
+                                        style="width: 350px; height: 240px; object-fit: cover" alt=""></a>
+                            </div>
+
+                            <!-- Blog Content -->
+                            <div class="blog-content">
+                                <span class="post-date">June 20, 2018</span>
+                                <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                    class="post-title">{{ $post->title }}</a>
+                                <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                    class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                            </div>
                         </div>
 
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <span class="post-date">June 20, 2018</span>
-                            <a href="#" class="post-title">Elon Musk: Tesla worker admitted to sabotage</a>
-                            <a href="#" class="post-author">By Michael Smith</a>
-                        </div>
                     </div>
-                </div>
-
-                <!-- Single News Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-blog-post style-2 mb-5">
-                        <!-- Blog Thumbnail -->
-                        <div class="blog-thumbnail">
-                            <a href="#"><img src="./newsbox-master/img/bg-img/5.jpg" alt=""></a>
-                        </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <span class="post-date">June 20, 2018</span>
-                            <a href="#" class="post-title">Rachel Sm ith breaks down while discussing border
-                                crisis </a>
-                            <a href="#" class="post-author">By Michael Smith</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single News Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-blog-post style-2 mb-5">
-                        <!-- Blog Thumbnail -->
-                        <div class="blog-thumbnail">
-                            <a href="#"><img src="./newsbox-master/img/bg-img/6.jpg" alt=""></a>
-                        </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <span class="post-date">June 20, 2018</span>
-                            <a href="#" class="post-title">Dow falls 287 points as trade war fears escalate</a>
-                            <a href="#" class="post-author">By Michael Smith</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single News Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-blog-post style-2 mb-5">
-                        <!-- Blog Thumbnail -->
-                        <div class="blog-thumbnail">
-                            <a href="#"><img src="./newsbox-master/img/bg-img/7.jpg" alt=""></a>
-                        </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <span class="post-date">June 20, 2018</span>
-                            <a href="#" class="post-title">Elon Musk: Tesla worker admitted to sabotage</a>
-                            <a href="#" class="post-author">By Michael Smith</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single News Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-blog-post style-2 mb-5">
-                        <!-- Blog Thumbnail -->
-                        <div class="blog-thumbnail">
-                            <a href="#"><img src="./newsbox-master/img/bg-img/8.jpg" alt=""></a>
-                        </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <span class="post-date">June 20, 2018</span>
-                            <a href="#" class="post-title">Rachel Sm ith breaks down while discussing border
-                                crisis </a>
-                            <a href="#" class="post-author">By Michael Smith</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single News Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-blog-post style-2 mb-5">
-                        <!-- Blog Thumbnail -->
-                        <div class="blog-thumbnail">
-                            <a href="#"><img src="./newsbox-master/img/bg-img/9.jpg" alt=""></a>
-                        </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <span class="post-date">June 20, 2018</span>
-                            <a href="#" class="post-title">Dow falls 287 points as trade war fears escalate</a>
-                            <a href="#" class="post-author">By Michael Smith</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12">
+                @endforeach
+                {{-- <div class="col-12">
                     <div class="load-more-button text-center">
                         <a href="#" class="btn newsbox-btn">Load More</a>
                     </div>
-                </div>
-
+                </div> --}}
             </div>
         </div>
     </div>
