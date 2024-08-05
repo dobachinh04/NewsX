@@ -158,8 +158,8 @@
                                     @endif
 
 
-                                    <li><input type="text" class="form-control" style="height: 22px"
-                                            placeholder="Tìm Kiếm..."></li>
+                                    {{-- <li><input type="text" class="form-control" style="height: 22px"
+                                            placeholder="Tìm Kiếm..."></li> --}}
                                 </ul>
 
                                 <!-- Header Add Area -->

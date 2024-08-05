@@ -55,6 +55,11 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <input type="text" class="form-control input-default" placeholder="Email"
+                                                    name="email" value="{{ old('email', $user->email) }}">
+                                            </div>
+
+                                            {{-- <div class="form-group">
                                                 <input type="password" class="form-control input-default"
                                                     placeholder="Mật Khẩu" name="password">
                                             </div>
@@ -62,15 +67,10 @@
                                             <div class="form-group">
                                                 <input type="password" class="form-control input-default"
                                                     placeholder="Nhập Lại Mật Khẩu" name="password_confirmation">
-                                            </div>
+                                            </div> --}}
                                         </div>
 
                                         <div class="col-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control input-default" placeholder="Email"
-                                                    name="email" value="{{ old('email', $user->email) }}">
-                                            </div>
-
                                             <div class="form-group">
                                                 <select class="form-control" name="role_id">
                                                     <option selected disabled>Chọn Vai Trò</option>

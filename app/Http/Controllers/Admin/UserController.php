@@ -105,7 +105,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed',
+            // 'password' => 'required|confirmed',
             'role_id' => 'required',
             'image' => 'nullable|image',
         ]);
@@ -130,7 +130,7 @@ class UserController extends Controller
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            // 'password' => $request->input('password'),
             'role_id' => $request->input('role_id') ?? $user->role_id,
             'image' => $imageName,
         ]);
