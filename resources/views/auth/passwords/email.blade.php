@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 
 @section('title')
-    Đăng Nhập - NewsX
+    Quên Mật Khẩu - NewsX
 @endsection
 
 @section('content')
@@ -27,13 +27,7 @@
         <section class="container forms">
             <div class="form login">
                 <div class="form-content">
-                    <header class="header">Đăng Nhập</header>
-
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                    <header class="header">Quên Mật Khẩu</header>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -45,48 +39,30 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('client.login') }}" method="POST">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
                         <div class="field input-field">
-                            <input type="email" name="email" placeholder="Email" class="input"
-                                value="{{ old('email') }}">
-                        </div>
-
-                        <div class="field input-field">
-                            <input type="password" name="password" placeholder="Mật Khẩu" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
-                        </div>
-
-                        <div class="form-link">
-                            <a href="{{ route('password.request') }}" class="forgot-pass">Quên mật khẩu?</a>
+                            <input type="email" name="email" required autofocus placeholder="Nhập email của bạn"
+                                class="input">
                         </div>
 
                         <div class="field button-field">
-                            <button type="submit">Đăng Nhập</button>
+                            <button type="submit">Gửi Liên Kết Đặt Lại Mật Khẩu</button>
                         </div>
                     </form>
+
 
                     <div class="form-link">
                         <span>Chưa có tài khoản? <a href="{{ route('client.register') }}" class="link signup-link">Đăng ký
                                 ngay</a></span>
                     </div>
-                </div>
-
-                <div class="line"></div>
-
-                <div class="media-options">
-                    <a href="#" class="field facebook">
-                        <i class='bx bxl-facebook facebook-icon'></i>
-                        <span>Đăng Nhập Với Facebook</span>
-                    </a>
-                </div>
-
-                <div class="media-options">
-                    <a href="#" class="field google">
-                        <img src="Login-Signup-Form/images/google.png" alt="" class="google-img">
-                        <span>Đăng Nhập Với Google</span>
-                    </a>
                 </div>
             </div>
         </section>

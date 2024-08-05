@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 
 @section('title')
-    Đăng Nhập - NewsX
+    Đặt Lại Mật Khẩu - NewsX
 @endsection
 
 @section('content')
@@ -16,7 +16,8 @@
         <title> @yield('title') </title> --}}
 
     <!-- CSS -->
-    <link rel="stylesheet" href="Login-Signup-Form/css/style1.css">
+    {{-- <link rel="stylesheet" href="Login-Signup-Form/css/style3.css"> --}}
+    <link rel="stylesheet" href="{{ asset('Login-Signup-Form/css/style3.css') }}">
 
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -27,13 +28,7 @@
         <section class="container forms">
             <div class="form login">
                 <div class="form-content">
-                    <header class="header">Đăng Nhập</header>
-
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                    <header class="header">Đặt Lại Mật Khẩu</header>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -45,25 +40,26 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('client.login') }}" method="POST">
+                    <form method="POST" action="{{ route('password.update') }}">
                         @csrf
-
-                        <div class="field input-field">
-                            <input type="email" name="email" placeholder="Email" class="input"
-                                value="{{ old('email') }}">
+                        <div class="field input-field" style="display: none;">
+                            <input class="input" type="hidden" name="token" value="{{ $token }}">
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" name="password" placeholder="Mật Khẩu" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
+                            <input type="email" name="email" value="{{ $email ?? old('email') }}" required autofocus>
                         </div>
 
-                        <div class="form-link">
-                            <a href="{{ route('password.request') }}" class="forgot-pass">Quên mật khẩu?</a>
+                        <div class="field input-field">
+                            <input type="password" name="password" required placeholder="Mật khẩu mới">
                         </div>
 
+                        <div class="field input-field">
+                            <input type="password" name="password_confirmation" required
+                                placeholder="Nhập lại mật khẩu mới">
+                        </div>
                         <div class="field button-field">
-                            <button type="submit">Đăng Nhập</button>
+                            <button type="submit">Đặt Lại Mật Khẩu</button>
                         </div>
                     </form>
 
@@ -71,22 +67,6 @@
                         <span>Chưa có tài khoản? <a href="{{ route('client.register') }}" class="link signup-link">Đăng ký
                                 ngay</a></span>
                     </div>
-                </div>
-
-                <div class="line"></div>
-
-                <div class="media-options">
-                    <a href="#" class="field facebook">
-                        <i class='bx bxl-facebook facebook-icon'></i>
-                        <span>Đăng Nhập Với Facebook</span>
-                    </a>
-                </div>
-
-                <div class="media-options">
-                    <a href="#" class="field google">
-                        <img src="Login-Signup-Form/images/google.png" alt="" class="google-img">
-                        <span>Đăng Nhập Với Google</span>
-                    </a>
                 </div>
             </div>
         </section>

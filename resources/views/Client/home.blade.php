@@ -242,6 +242,8 @@
                                                         class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                                         class="post-title">{{ $post->title }}</a>
+                                                    <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                                        class="post-author">Tác Giả: {{ $post->author->name }}</a>
                                                 </div>
                                             </div>
                                         </div>
