@@ -90,6 +90,9 @@ class PostController extends Controller
     {
         $post = Post::with('author', 'category')->findOrFail($id);
 
+        // Tăng số lượt xem
+        $post->increment('view');
+
         // category này lấy ra category theo id để hiển thị
         $category = $post->category;
 
@@ -98,12 +101,7 @@ class PostController extends Controller
 
         $latestPostsComponent = Post::orderBy('created_at', 'desc')->take(5)->get();
 
-        return view('client.single-post', [
-            'post' => $post,
-            'category' => $category,
-            'categories' => $categories,
-            'latestPostsComponent' => $latestPostsComponent,
-        ]);
+        return view('client.single-post', compact('post', 'category', 'categories', 'latestPostsComponent', ));
     }
 
     public function categories(string $id)

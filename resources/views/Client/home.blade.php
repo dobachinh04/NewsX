@@ -217,6 +217,8 @@
                                                         class="post-title">{{ $post->title }}</a>
                                                     <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
                                                         class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-date">Lượt Xem: {{ $post->view }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -242,6 +244,8 @@
                                                         class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                                         class="post-title">{{ $post->title }}</a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-date">Lượt Xem: {{ $post->view }}</a>
                                                     {{-- <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
                                                         class="post-author">Tác Giả: {{ $post->author->name }}</a> --}}
                                                 </div>
@@ -274,6 +278,8 @@
                                                         class="post-title">{{ $post->title }}</a>
                                                     <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
                                                         class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-author">Lượt Xem: {{ $post->view }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -297,6 +303,8 @@
                                                         class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                                         class="post-title">{{ $post->title }}</a>
+                                                    <a href="{{ route('client.show', ['id' => $post->id]) }}"
+                                                        class="post-date">Lượt Xem: {{ $post->view }}</a>
                                                     {{-- <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
                                                         class="post-author">Tác Giả: {{ $post->author->name }}</a> --}}
                                                 </div>
@@ -545,7 +553,7 @@
                             <!-- Blog Content -->
                             <div class="blog-content">
                                 <a href="{{ route('client.show', ['id' => $post->id]) }}"><span
-                                    class="post-date">{{ $post->created_at->format('F d, Y') }}</span></a>
+                                        class="post-date">{{ $post->created_at->format('F d, Y') }}</span></a>
                                 <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                     class="post-title">{{ $post->title }}</a>
                                 <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
