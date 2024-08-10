@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Danh Sách Tin Tức - FlashNews
+    Danh Sách Tin Tức - NewsX
 @endsection
 
 @section('content')

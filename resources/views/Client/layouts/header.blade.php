@@ -12,10 +12,10 @@
     <title>@yield('title')</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/newsbox-master/img/core-img/favicon.ico">
+    <link rel="icon" href="/NewsX-Logo-Header/icon.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/newsbox-master/style.css">
+    <link rel="stylesheet" href="/newsbox-master/style1.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
 
                         <!-- Nav brand -->
                         <a href="{{ route('client.home') }}" class="nav-brand"><img
-                                src="/newsbox-master/img/core-img/logo.png" alt=""></a>
+                                src="/NewsX-Logo-Header/profile2.png" alt="NewsX Logo"></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">

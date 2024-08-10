@@ -544,7 +544,8 @@
 
                             <!-- Blog Content -->
                             <div class="blog-content">
-                                <span class="post-date">June 20, 2018</span>
+                                <a href="{{ route('client.show', ['id' => $post->id]) }}"><span
+                                    class="post-date">{{ $post->created_at->format('F d, Y') }}</span></a>
                                 <a href="{{ route('client.show', ['id' => $post->id]) }}"
                                     class="post-title">{{ $post->title }}</a>
                                 <a href="{{ route('client.author', ['id' => $post->author->id]) }}"

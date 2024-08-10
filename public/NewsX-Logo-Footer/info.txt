@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Rounded_Elegance
+font link: https://www.dafont.com/rounded-elegance.font
+font author: Genumano
+font author site: mailto:dcc700@gmail.com
+Slogan Font: LindenHill-webfont.ttf
+
+icon designer: Seb Cornelius
+icon designer link: /scorn
+        
+{"bg":"transparent","icon-gradient-0":"#006678","icon-gradient-1":"#4FA8FF","font":"#000000","slogan":"#141414"}
+      

@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Quantico-Regular
+font link: https://fonts.google.com/specimen/Quantico
+font author: MADType
+font author site: http://www.madtype.com/
+Slogan Font: WorkSans-Light.ttf
+
+icon designer: Theo K.
+icon designer link: /theokgr
+        
+{"bg":"transparent","icon-gradient-0":"#007DE8","icon-gradient-1":"#A1C3DB","font":"#000000","slogan":"#141414"}
+      

@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 
 @section('title')
-    {{ $post->title }} - FlashNews
+    {{ $post->title }} - NewsX
 @endsection
 
 @section('content')

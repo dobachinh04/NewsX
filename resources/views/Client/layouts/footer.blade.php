@@ -2,7 +2,7 @@
  <footer class="footer-area">
      <!-- Footer Logo -->
      <div class="footer-logo mb-100">
-         <a href="index.html"><img src="/newsbox-master/img/core-img/logo.png" alt=""></a>
+         <a href="index.html"><img src="/NewsX-Logo-Footer/cover2.png" width="400px" alt=""></a>
      </div>
      <!-- Footer Content -->
      <div class="container">
@@ -12,23 +12,23 @@
                      <!-- Footer Nav -->
                      <div class="footer-nav">
                          <ul>
-                             <li><a href="#">Contact Us</a></li>
-                             <li><a href="#">Closed Captioning</a></li>
+                             <li><a href="#">Liên Hệ</a></li>
+                             <li><a href="#">Giới Thiệu</a></li>
                              <li><a href="#">Site Map</a></li>
                          </ul>
                      </div>
                      <!-- Social Info -->
                      <div class="footer-social-info">
-                         <a href="#" data-toggle="tooltip" data-placement="top" title="pinterest"><i
-                                 class="fa fa-pinterest" aria-hidden="true"></i></a>
+                         {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="pinterest"><i
+                                 class="fa fa-pinterest" aria-hidden="true"></i></a> --}}
                          <a href="#" data-toggle="tooltip" data-placement="top" title="facebook"><i
                                  class="fa fa-facebook" aria-hidden="true"></i></a>
-                         <a href="#" data-toggle="tooltip" data-placement="top" title="twitter"><i
+                         {{-- <a href="#" data-toggle="tooltip" data-placement="top" title="twitter"><i
                                  class="fa fa-twitter" aria-hidden="true"></i></a>
                          <a href="#" data-toggle="tooltip" data-placement="top" title="dribbble"><i
                                  class="fa fa-dribbble" aria-hidden="true"></i></a>
                          <a href="#" data-toggle="tooltip" data-placement="top" title="behance"><i
-                                 class="fa fa-behance" aria-hidden="true"></i></a>
+                                 class="fa fa-behance" aria-hidden="true"></i></a> --}}
                          <a href="#" data-toggle="tooltip" data-placement="top" title="linkedin"><i
                                  class="fa fa-linkedin" aria-hidden="true"></i></a>
                      </div>
@@ -40,14 +40,12 @@
 
                      <!-- Copywrite Text -->
                      <p class="copywrite-text"><a href="#">
-                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                              Copyright &copy;
                              <script>
                                  document.write(new Date().getFullYear());
-                             </script> All rights reserved | This template is made with <i
-                                 class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                 target="_blank">Colorlib</a>
-                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                             </script> All rights reserved | Made by <a
+                                 href="https://github.com/dobachinh04" target="_blank">Do Ba Chinh</a>
+                     </p>
                  </div>
              </div>
          </div>
