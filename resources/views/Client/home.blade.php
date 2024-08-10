@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 
 @section('title')
-    Trang Chủ - FlashNews
+    Trang Chủ - NewsX
 @endsection
 
 @section('content')
@@ -70,7 +70,7 @@
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
                                     <a href="{{ route('client.show', ['id' => $largePost->id]) }}"><img
-                                            src="{{ asset('storage/images/' . $largePost->image) }}"
+                                            src="{{ Storage::url('images/' . $largePost->image) }}"
                                             style="width: 900px; height: 710px; object-fit: cover;" alt=""></a>
                                 </div>
 
@@ -469,62 +469,61 @@
     <!-- ##### Intro News Area End ##### -->
 
     <!-- ##### Video Area Start ##### -->
-    <section class="video-area bg-img bg-overlay bg-fixed"
-        style="background-image: url(./newsbox-master/img/bg-img/10.jpg);">
-        <div class="container">
-            <div class="row">
-                <!-- Featured Video Area -->
-                <div class="col-12">
-                    <div class="featured-video-area d-flex align-items-center justify-content-center">
-                        @foreach ($most1ViewedPost as $post)
+    @foreach ($most1ViewedPost as $post)
+        <section class="video-area bg-img bg-overlay bg-fixed"
+            style="background-image: url('{{ Storage::url('images/' . $post->image) }}')">
+            <div class="container">
+                <div class="row">
+                    <!-- Featured Video Area -->
+                    <div class="col-12">
+                        <div class="featured-video-area d-flex align-items-center justify-content-center">
                             <div class="video-content text-center">
-                                {{-- <a href="#" class="video-btn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
                                 <span class="published-date">{{ $post->created_at->format('F d, Y') }}</span>
                                 <a href="{{ route('client.show', ['id' => $post->id]) }}" class="post-title">
                                     <h3 class="video-title">{{ $post->title }}</h3>
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    @endforeach
+
+    <!-- Video Slideshow -->
+    <div class="video-slideshow py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Video Slides -->
+                    <div class="video-slides owl-carousel">
+                        <!-- Single News Area -->
+                        @foreach ($random5Posts as $post)
+                            <div class="single-blog-post style-3">
+                                <!-- Blog Thumbnail -->
+                                <div class="blog-thumbnail">
+                                    <a href="{{ route('client.show', ['id' => $post->id]) }}">
+                                        <img src="{{ asset('storage/images/' . $post->image) }}"
+                                            style="width: 350px; height: 240px; object-fit: cover" alt="">
+                                    </a>
+                                    {{-- <a href="#" class="video-btn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
+                                </div>
+
+                                <!-- Blog Content -->
+                                <div class="blog-content">
+                                    <span class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
+                                    <a href="{{ route('client.show', ['id' => $post->id]) }}">
+                                        <p class="post-title">{{ $post->title }}</p>
+                                    </a>
+                                    <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
+                                        class="post-author">Tác Giả: {{ $post->author->name }}</a>
+                                </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Video Slideshow -->
-        <div class="video-slideshow py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Video Slides -->
-                        <div class="video-slides owl-carousel">
-                            <!-- Single News Area -->
-                            @foreach ($random5Posts as $post)
-                                <div class="single-blog-post style-3">
-                                    <!-- Blog Thumbnail -->
-                                    <div class="blog-thumbnail">
-                                        <a href="{{ route('client.show', ['id' => $post->id]) }}">
-                                            <img src="{{ asset('storage/images/' . $post->image) }}"
-                                                style="width: 350px; height: 240px; object-fit: cover" alt="">
-                                        </a>
-                                        {{-- <a href="#" class="video-btn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
-                                    </div>
-
-                                    <!-- Blog Content -->
-                                    <div class="blog-content">
-                                        <span class="post-date">{{ $post->created_at->format('F d, Y') }}</span>
-                                        <a href="{{ route('client.show', ['id' => $post->id]) }}">
-                                            <p class="post-title">{{ $post->title }}</p>
-                                        </a>
-                                        <a href="{{ route('client.author', ['id' => $post->author->id]) }}"
-                                            class="post-author">Tác Giả: {{ $post->author->name }}</a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </section>
     <!-- ##### Video Area End ##### -->
 
