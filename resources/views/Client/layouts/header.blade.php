@@ -15,7 +15,7 @@
     <link rel="icon" href="/NewsX-Logo-Header/icon.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/newsbox-master/style1.css">
+    <link rel="stylesheet" href="/newsbox-master/style2.css">
 </head>
 
 <body>
