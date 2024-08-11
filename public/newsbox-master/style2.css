@@ -302,7 +302,7 @@ img {
 
 /* :: 3.5.0 Miscellaneous */
 .tooltip-inner {
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
 }
 
 .tooltip .arrow::before {
@@ -386,13 +386,13 @@ img {
 }
 
 #scrollUp:hover {
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     color: #ffffff;
 }
 
 /* :: 3.7.0 Newsbox Button */
 .newsbox-btn {
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
     position: relative;
@@ -422,7 +422,7 @@ img {
 }
 
 .newsbox-btn.btn-2:hover, .newsbox-btn.btn-2:focus {
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     color: #ffffff;
 }
 
@@ -432,7 +432,7 @@ img {
 }
 
 .newsbox-btn.btn-3:hover, .newsbox-btn.btn-3:focus {
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     color: #ffffff;
 }
 
@@ -574,7 +574,7 @@ img {
     flex: 0 0 180px;
     max-width: 180px;
     width: 180px;
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     height: 55px;
 }
 
@@ -896,9 +896,42 @@ img {
     }
 }
 
-.single-blog-post.style-1 .blog-content .post-title:hover, .single-blog-post.style-1 .blog-content .post-title:focus {
-    color: #00b7ff;
+.single-blog-post.style-1 .blog-content .post-title {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
 }
+
+.single-blog-post.style-1 .blog-content .post-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
+    z-index: -1;
+    transition: all 0.4s ease-in-out;
+    transform: scale(1);
+    /* Ban đầu không phóng to */
+    filter: blur(0);
+    /* Ban đầu không làm mờ */
+    opacity: 0;
+    /* Ẩn background ban đầu */
+    border-radius: 5px;
+    /* Nếu bạn muốn có viền bo tròn */
+}
+
+.single-blog-post.style-1 .blog-content .post-title:hover::before,
+.single-blog-post.style-1 .blog-content .post-title:focus::before {
+    transform: scale(1.02);
+    /* Phóng to nền một chút */
+    filter: blur(2.5px);
+    /* Làm mờ background */
+    opacity: 1;
+    /* Hiển thị background khi hover */
+}
+
 
 .single-blog-post.style-1:hover .blog-thumbnail img {
     -webkit-transform: scale(1.1);
@@ -976,7 +1009,7 @@ img {
     transform: translate(-50%, -50%);
     width: 63px;
     height: 63px;
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     color: #ffffff;
     font-size: 24px;
     line-height: 63px;
@@ -1193,7 +1226,7 @@ img {
     transform: translate(-50%, -50%);
     width: 44px;
     height: 44px;
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     color: #ffffff;
     font-size: 18px;
     line-height: 44px;
@@ -1760,7 +1793,7 @@ img {
 .featured-video-area .video-btn {
     width: 63px;
     height: 63px;
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     color: #ffffff;
     font-size: 24px;
     line-height: 63px;
@@ -1827,7 +1860,7 @@ img {
     margin-top: -20px;
     font-size: 18px;
     color: #ffffff;
-    background-color: #00b7ff;
+    background: linear-gradient(to right, #00b7ff, #06b3b9);
     left: -20px;
     text-align: center;
     -webkit-transition-duration: 500ms;

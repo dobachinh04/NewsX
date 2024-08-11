@@ -33,10 +33,9 @@
                                  class="fa fa-linkedin" aria-hidden="true"></i></a>
                      </div>
 
-                     <p class="mb-15">Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum.
-                         Etiam pretium turpis eget nibh laoreet iaculis. Proin ac urna at lectus volutpat lobortis.
-                         Vestibulum venenatis iaculis diam vitae lobortis. Donec tincidunt viverra elit, sed consectetur
-                         est pr etium ac. Mauris nec mauris tellus. </p>
+                     <p class="mb-15">NewsX là trang tin tức hàng đầu, cung cấp thông tin nhanh chóng, chính xác và sâu
+                         sắc về các sự kiện trong nước và quốc tế. Với NewsX, bạn luôn được cập nhật những tin tức quan
+                         trọng nhất mỗi ngày.</p>
 
                      <!-- Copywrite Text -->
                      <p class="copywrite-text"><a href="#">
