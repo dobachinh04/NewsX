@@ -23,93 +23,21 @@ class PostController extends Controller
         return view('admin.posts.index', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
+        // Lấy tất cả danh mục để chọn
         $categories = Category::get();
 
         // Lấy thông tin người dùng đang đăng nhập
         $user = Auth::user();
 
-        return view(
-            'admin.posts.create',
-            [
-                'categories' => $categories,
-                'user' => $user,
-            ]
-        );
+        return view('admin.posts.create', compact('categories', 'user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StorePostRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
-                $dataPost = [
-                    'title' => $request->title,
-                    'category_id' => $request->category_id,
-                    'content' => $request->content,
-                    'author_id' => auth()->id(),
-                    'view' => 0,
-                ];
-
-                // if ($request->hasFile('image')) {
-                $dataPost['image'] = Storage::put('images/posts', $request->file('image'));
-                // }
-
-                // Tạo post mới
-                Post::query()->create($dataPost);
-            });
-
-            return redirect()->route('admin.posts.index')->with('success', 'Thêm thành công');
-        } catch (Exception $e) {
-            return back()->withErrors($e->getMessage())->withInput();
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        // Tìm bài viết theo ID
-        $post = Post::with(['category', 'author'])->findOrFail($id);
-
-        // Truyền bài viết đến view
-        return view('admin.posts.show', ['post' => $post]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        // Lấy bài viết cần chỉnh sửa theo ID
-        $post = Post::findOrFail($id);
-
-        // Lấy tất cả danh mục để chọn
-        $categories = Category::all();
-
-        return view('admin.posts.update', [
-            'post' => $post,
-            'categories' => $categories,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePostRequest $request, Post $post)
-    {
-        // Lấy bài viết theo ID và cập nhật dữ liệu
-        // $post = Post::findOrFail($id);
-
-        try {
-            DB::transaction(function () use ($request, $post) {
                 $dataPost = [
                     'title' => $request->title,
                     'category_id' => $request->category_id,
@@ -123,7 +51,63 @@ class PostController extends Controller
                 }
 
                 // Tạo post mới
-                Post::query()->update($dataPost);
+                Post::query()->create($dataPost);
+            });
+
+            return redirect()->route('admin.posts.index')->with('success', 'Thêm thành công');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage())->withInput();
+        }
+    }
+
+    public function show(Post $post)
+    {
+        $post->load(['category', 'author']);
+
+        // Tìm bài viết theo ID
+        // $post = Post::with(['category', 'author'])->findOrFail($id);
+
+        // Truyền bài viết đến view
+        return view('admin.posts.show', compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+        $post->load(['category', 'author']);
+
+        // Lấy bài viết cần chỉnh sửa theo ID
+        // $post = Post::findOrFail($id);
+
+        $categories = Category::pluck('name', 'id')->all();
+
+        $user = Auth::user();
+
+        return view('admin.posts.update', compact('post', 'categories', 'user'));
+    }
+
+    public function update(UpdatePostRequest $request, Post $post)
+    {
+        try {
+            DB::transaction(function () use ($request, $post) {
+                $dataPost = [
+                    'title' => $request->title,
+                    'category_id' => $request->category_id,
+                    'content' => $request->content,
+                    'author_id' => auth()->id(),
+                ];
+
+                // Cập nhật ảnh nếu có
+                if ($request->hasFile('image')) {
+                    // Xóa ảnh cũ nếu cập nhật
+                    if ($post->image && Storage::exists($post->image)) {
+                        Storage::delete($post->image);
+                    }
+
+                    // Cập nhật ảnh mới
+                    $dataPost['image'] = Storage::put('images/posts', $request->file('image'));
+                }
+
+                $post->update($dataPost);
             });
 
             return redirect()->route('admin.posts.index')->with('success', 'Cập nhật thành công');
@@ -132,17 +116,22 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        $post = Post::findOrFail($id);
+        try {
+            DB::transaction(function () use ($post) {
+                // Xóa bài viết
+                $post->delete();
+            });
 
-        // Xóa bài viết
-        $post->delete();
+            // Xóa ảnh
+            if ($post->image && Storage::exists($post->image)) {
+                Storage::delete($post->image);
+            }
 
-        // Chuyển hướng về trang danh sách bài viết với thông báo thành công
-        return redirect()->route('admin.posts.index')->with('success', 'Xóa thành công');
+            return redirect()->route('admin.posts.index')->with('success', 'Xóa thành công');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage())->withInput();
+        }
     }
 }

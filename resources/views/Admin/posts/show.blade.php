@@ -42,13 +42,13 @@
                                 <h3>Tiêu Đề: {{ $post->title }}</h3>
 
                                 @if ($post->image)
-                                    <img src="{{ asset('storage/images/' . $post->image) }}"
-                                        style="width: 100%; max-width: 250px;" alt="Image">
+                                    <img src="{{ Storage::url($post->image) }}" style="width: 100%; max-width: 250px;"
+                                        alt="Image">
                                 @endif
 
                                 <div class="mt-3">
                                     <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Quay Lại</a>
-                                    <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}"
+                                    <a href="{{ route('admin.posts.edit', $post) }}"
                                         class="btn btn-warning">Sửa</a>
                                 </div>
                             </div>

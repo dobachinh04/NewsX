@@ -41,7 +41,7 @@
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form action="{{ route('admin.posts.update', ['id' => $post->id]) }}" method="POST"
+                                <form action="{{ route('admin.posts.update', $post) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
@@ -50,29 +50,27 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control input-default"
-                                                    placeholder="Tiêu Đề" name="title"
-                                                    value="{{ old('title', $post->title) }}">
+                                                    placeholder="Tiêu Đề" name="title" value="{{ $post->title }}">
                                             </div>
 
                                             <div class="form-group">
                                                 <select class="form-control" name="category_id"
                                                     value="{{ old('category_id') }}">
                                                     <option selected disabled>Chọn Loại Tin</option>
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}"
-                                                            {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>
-                                                            {{ $category->name }}</option>
+                                                    @foreach ($categories as $id => $name)
+                                                        <option @selected($post->category_id == $id) value="{{ $id }}">
+                                                            {{ $name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
-                                            <input type="text" class="form-control input-default" value="Tác Giả: "
-                                                disabled value="{{ old('author_id', $post->author_id) }}">
+                                            <input type="text" class="form-control input-default" disabled
+                                                value="Tác Giả: {{ $user->name }}">
                                         </div>
 
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung" name="content">{{ old('content', $post->content) }}</textarea>
+                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung" name="content">{{ $post->content }}</textarea>
                                             </div>
 
                                             <div class="input-group mb-3">
@@ -89,8 +87,8 @@
                                             </div>
 
                                             @if ($post->image)
-                                                <img class="mb-3" src="{{ asset('storage/images/' . $post->image) }}"
-                                                    style="width: 100px;" alt="Ảnh Cũ">
+                                                <img class="mb-3" src="{{ Storage::url($post->image) }}"
+                                                    style="width: 100px;" alt="{{ Storage::url($post->image) }}">
                                             @endif
                                         </div>
                                     </div>

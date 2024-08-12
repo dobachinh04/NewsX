@@ -49,7 +49,7 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control input-default"
-                                                    placeholder="Tiêu Đề" name="title">
+                                                    placeholder="Tiêu Đề" name="title" value="{{ old('title') }}">
                                             </div>
 
                                             <div class="form-group">
@@ -61,13 +61,13 @@
                                                 </select>
                                             </div>
 
-                                            <input type="text" class="form-control input-default" value="Tác Giả: {{ $user->name }}"
-                                                disabled>
+                                            <input type="text" class="form-control input-default"
+                                                value="Tác Giả: {{ $user->name }}" disabled>
                                         </div>
 
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung" name="content"></textarea>
+                                                <textarea class="form-control" rows="4" id="comment" placeholder="Nội Dung" name="content">{{ old('content') }}</textarea>
                                             </div>
 
                                             <div class="input-group mb-3">

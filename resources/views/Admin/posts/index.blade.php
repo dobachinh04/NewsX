@@ -37,6 +37,16 @@
                     </div>
                 @endif
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -76,12 +86,11 @@
                                                     <td>{{ $post->created_at->format('d/m/Y H:i') }}</td>
                                                     <td>{{ $post->updated_at->format('d/m/Y H:i') }}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}"
+                                                        <a href="{{ route('admin.posts.show', $post) }}"
                                                             class="btn btn-primary">Chi Tiết</a>
                                                         <a href="{{ route('admin.posts.edit', $post) }}"
                                                             class="btn btn-warning">Sửa</a>
-                                                        <form
-                                                            action="{{ route('admin.posts.destroy', ['id' => $post->id]) }}"
+                                                        <form action="{{ route('admin.posts.destroy', $post) }}"
                                                             method="POST" style="display:inline;"
                                                             onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
                                                             @csrf

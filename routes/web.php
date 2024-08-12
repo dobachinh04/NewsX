@@ -58,10 +58,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::get('/',                                 [AdminPostController::class, 'index'])->name('index');
         Route::get('/create',                           [AdminPostController::class, 'create'])->name('create');
         Route::post('/',                                [AdminPostController::class, 'store'])->name('store');
-        Route::get('/{id}/edit',                        [AdminPostController::class, 'edit'])->name('edit');
-        Route::put('/{id}',                             [AdminPostController::class, 'update'])->name('update');
-        Route::get('/show/{id}',                        [AdminPostController::class, 'show'])->name('show');
-        Route::delete('/{id}',                          [AdminPostController::class, 'destroy'])->name('destroy');
+        Route::get('/{post}/edit',                      [AdminPostController::class, 'edit'])->name('edit');
+        Route::put('/{post}',                           [AdminPostController::class, 'update'])->name('update');
+        Route::get('/show/{post}',                      [AdminPostController::class, 'show'])->name('show');
+        Route::delete('/{post}',                        [AdminPostController::class, 'destroy'])->name('destroy');
     });
 
     // Admin - Users:
