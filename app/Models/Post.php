@@ -20,4 +20,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'author_id');
     }
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
