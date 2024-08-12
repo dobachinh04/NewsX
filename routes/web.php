@@ -40,11 +40,11 @@ Route::post('reset-password',                           [ResetPasswordController
 // Admin Auth:
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function() {
     // Admin - Dashboard:
-    Route::get('/admin/dashboard',                      [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/admin/chart',                          [DashboardController::class, 'chart'])->name('chart');
+    Route::get('/dashboard',                            [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/chart',                                [DashboardController::class, 'chart'])->name('chart');
 
     // Admin - Posts Categories:
-    Route::prefix('categories')->name('categories.')->middleware('auth')->group(function() {
+    Route::prefix('categories')->name('categories.')->group(function() {
         Route::get('/',                                 [CategoryController::class, 'index'])->name('index');
         Route::get('/create',                           [CategoryController::class, 'create'])->name('create');
         Route::post('/',                                [CategoryController::class, 'store'])->name('store');
@@ -54,7 +54,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     });
 
     // Admin - Posts:
-    Route::prefix('posts')->name('posts.')->middleware('auth')->group(function() {
+    Route::prefix('posts')->name('posts.')->group(function() {
         Route::get('/',                                 [AdminPostController::class, 'index'])->name('index');
         Route::get('/create',                           [AdminPostController::class, 'create'])->name('create');
         Route::post('/',                                [AdminPostController::class, 'store'])->name('store');
@@ -65,7 +65,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     });
 
     // Admin - Users:
-    Route::prefix('users')->name('users.')->middleware('auth')->group(function() {
+    Route::prefix('users')->name('users.')->group(function() {
         Route::get('/',                                 [UserController::class, 'index'])->name('index');
         Route::get('/create',                           [UserController::class, 'create'])->name('create');
         Route::post('/',                                [UserController::class, 'store'])->name('store');

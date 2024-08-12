@@ -3,25 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Role;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with(['category', 'author'])->get();
+        $data = Post::with(['category', 'author'])->get();
 
-        return view(
-            'admin.posts.index',
-            [
-                'posts' => $posts
-            ]
-        );
+        return view('admin.posts.index', compact('data'));
     }
 
     /**
@@ -46,35 +45,30 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        // Validate the request data
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'nullable',
-            'category_id' => 'required|exists:categories,id',
-            'content' => 'required|string',
-        ]);
+        try {
+            DB::transaction(function () use ($request) {
+                $dataPost = [
+                    'title' => $request->title,
+                    'category_id' => $request->category_id,
+                    'content' => $request->content,
+                    'author_id' => auth()->id(),
+                    'view' => 0,
+                ];
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/images');
-            $imageName = basename($imagePath);
-        } else {
-            $imageName = null; // Set null nếu không có ảnh
+                // if ($request->hasFile('image')) {
+                $dataPost['image'] = Storage::put('images/posts', $request->file('image'));
+                // }
+
+                // Tạo post mới
+                Post::query()->create($dataPost);
+            });
+
+            return redirect()->route('admin.posts.index')->with('success', 'Thêm thành công');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage())->withInput();
         }
-
-        // Tạo post mới
-        Post::create([
-            'title' => $request->input('title'),
-            'image' => $imageName,
-            'category_id' => $request->input('category_id'),
-            'content' => $request->input('content'),
-            // 'author_id' => auth()->id(),
-            'author_id' => auth()->id(),
-            'view' => 0,
-        ]);
-
-        return redirect()->route('admin.posts.index')->with('success', 'Thêm thành công');
     }
 
     /**
@@ -109,44 +103,33 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'nullable|image', // Xác thực ảnh nếu có
-            'category_id' => 'required|exists:categories,id',
-            'content' => 'required|string',
-            'author_id' => 'nullable|exists:users,id',
-        ]);
-
         // Lấy bài viết theo ID và cập nhật dữ liệu
-        $post = Post::findOrFail($id);
+        // $post = Post::findOrFail($id);
 
-        // Xử lý ảnh
-        if ($request->hasFile('image')) {
-            // Xóa ảnh cũ nếu có
-            if ($post->image) {
-                Storage::delete('public/images/' . $post->image);
-            }
+        try {
+            DB::transaction(function () use ($request, $post) {
+                $dataPost = [
+                    'title' => $request->title,
+                    'category_id' => $request->category_id,
+                    'content' => $request->content,
+                    'author_id' => auth()->id(),
+                    'view' => 0,
+                ];
 
-            // Lưu ảnh mới
-            $imagePath = $request->file('image')->store('public/images');
-            $imageName = basename($imagePath);
-        } else {
-            // Nếu không có ảnh mới, giữ nguyên ảnh cũ
-            $imageName = $post->image;
+                if ($request->hasFile('image')) {
+                    $dataPost['image'] = Storage::put('images/posts', $request->file('image'));
+                }
+
+                // Tạo post mới
+                Post::query()->update($dataPost);
+            });
+
+            return redirect()->route('admin.posts.index')->with('success', 'Cập nhật thành công');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage())->withInput();
         }
-
-        // Cập nhật bài viết
-        $post->update([
-            'title' => $request->input('title'),
-            'image' => $imageName,
-            'category_id' => $request->input('category_id'),
-            'content' => $request->input('content'),
-            'author_id' => $request->input('author_id') ?? $post->author_id, // Giữ nguyên author_id nếu không có thay đổi
-        ]);
-
-        return redirect()->route('admin.posts.index')->with('success', 'Cập nhật thành công');
     }
 
     /**

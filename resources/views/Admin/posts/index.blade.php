@@ -61,11 +61,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($posts as $post)
+                                            @foreach ($data as $post)
                                                 <tr>
                                                     <td>{{ $post->id }}</td>
                                                     <td>{{ $post->title }}</td>
-                                                    <td><img src="{{ asset('storage/images/' . $post->image) }}"
+                                                    <td>
+                                                        <img src="{{ Storage::url($post->image) }}"
                                                             style="width: 100px; height: 75px; object-fit: cover;"
                                                             alt="">
                                                     </td>
@@ -77,7 +78,7 @@
                                                     <td>
                                                         <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}"
                                                             class="btn btn-primary">Chi Tiết</a>
-                                                        <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}"
+                                                        <a href="{{ route('admin.posts.edit', $post) }}"
                                                             class="btn btn-warning">Sửa</a>
                                                         <form
                                                             action="{{ route('admin.posts.destroy', ['id' => $post->id]) }}"
