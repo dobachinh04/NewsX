@@ -932,6 +932,19 @@ img {
     /* Hiển thị background khi hover */
 }
 
+.post-title-new {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Số dòng tối đa */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Thêm dấu ... khi nội dung bị cắt */
+    max-height: 3em;
+    /* Điều chỉnh chiều cao dựa trên số dòng tối đa */
+    line-height: 1.5em;
+    /* Khoảng cách giữa các dòng, điều chỉnh theo font-size của bạn */
+}
 
 .single-blog-post.style-1:hover .blog-thumbnail img {
     -webkit-transform: scale(1.1);

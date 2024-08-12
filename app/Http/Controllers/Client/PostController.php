@@ -13,7 +13,7 @@ class PostController extends Controller
     public function index()
     {
         // Lấy 8 bài viết mới nhất và tác giả
-        $posts = Post::with('author')->take(8)->get();
+        $posts = Post::orderBy('created_at', 'desc')->with('author')->take(8)->get();
 
         // Chia dữ liệu thành hai nhóm
         $latestPosts = $posts->take(2); // 2 bài viết mới nhất
