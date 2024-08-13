@@ -31,6 +31,14 @@
             </li>
 
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="fa-solid fa-tags"></i><span class="nav-text">Thẻ</span></a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('admin.tags.index') }}">Danh Sách Thẻ</a></li>
+                    <li><a href="{{ route('admin.tags.create') }}">Thêm Thẻ</a></li>
+                </ul>
+            </li>
+
+            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="fa-solid fa-user"></i><span class="nav-text">Người Dùng</span></a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.users.index') }}">Danh Sách Người Dùng</a></li>

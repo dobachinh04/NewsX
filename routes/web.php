@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\PostController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -62,6 +63,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::put('/{post}',                           [AdminPostController::class, 'update'])->name('update');
         Route::get('/show/{post}',                      [AdminPostController::class, 'show'])->name('show');
         Route::delete('/{post}',                        [AdminPostController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('tags')->name('tags.')->group(function() {
+        Route::get('/',                                 [TagController::class, 'index'])->name('index');
+        Route::get('/create',                           [TagController::class, 'create'])->name('create');
+        Route::post('/',                                [TagController::class, 'store'])->name('store');
+        Route::get('/{id}/edit',                       [TagController::class, 'edit'])->name('edit');
+        Route::put('/{id}',                            [TagController::class, 'update'])->name('update');
+        Route::get('/show/{id}',                       [TagController::class, 'show'])->name('show');
+        Route::delete('/{id}',                         [TagController::class, 'destroy'])->name('destroy');
     });
 
     // Admin - Users:
