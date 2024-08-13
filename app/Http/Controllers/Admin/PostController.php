@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Role;
+use App\Models\Tag;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $data = Post::with(['category', 'author'])->get();
+        $data = Post::with(['category', 'author', 'tags'])->get();
 
         return view('admin.posts.index', compact('data'));
     }
@@ -26,12 +27,14 @@ class PostController extends Controller
     public function create()
     {
         // Lấy tất cả danh mục để chọn
-        $categories = Category::get();
+        $categories = Category::pluck('name', 'id')->all();
+
+        $tags = Tag::pluck('name', 'id')->all();
 
         // Lấy thông tin người dùng đang đăng nhập
         $user = Auth::user();
 
-        return view('admin.posts.create', compact('categories', 'user'));
+        return view('admin.posts.create', compact('categories', 'tags', 'user'));
     }
 
     public function store(StorePostRequest $request)
@@ -50,8 +53,9 @@ class PostController extends Controller
                     $dataPost['image'] = Storage::put('images/posts', $request->file('image'));
                 }
 
-                // Tạo post mới
-                Post::query()->create($dataPost);
+                $post = Post::query()->create($dataPost);
+
+                $post->tags()->attach($request->tags);
             });
 
             return redirect()->route('admin.posts.index')->with('success', 'Thêm thành công');
@@ -62,7 +66,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $post->load(['category', 'author']);
+        $post->load(['category', 'author', 'tags']);
 
         // Tìm bài viết theo ID
         // $post = Post::with(['category', 'author'])->findOrFail($id);
@@ -73,16 +77,20 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $post->load(['category', 'author']);
+        $post->load(['category', 'author', 'tags']);
 
         // Lấy bài viết cần chỉnh sửa theo ID
         // $post = Post::findOrFail($id);
 
         $categories = Category::pluck('name', 'id')->all();
 
+        $tags = Tag::pluck('name', 'id')->all();
+
+        $postTags = $post->tags->pluck('id')->all();
+
         $user = Auth::user();
 
-        return view('admin.posts.update', compact('post', 'categories', 'user'));
+        return view('admin.posts.update', compact('post', 'categories', 'tags', 'postTags', 'user'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
@@ -108,6 +116,8 @@ class PostController extends Controller
                 }
 
                 $post->update($dataPost);
+
+                $post->tags()->sync($request->tags);
             });
 
             return redirect()->route('admin.posts.index')->with('success', 'Cập nhật thành công');

@@ -62,6 +62,7 @@
                                                 <th>ID</th>
                                                 <th>Tên</th>
                                                 <th>Danh Mục</th>
+                                                <th>Thẻ</th>
                                                 <th>Ảnh</th>
                                                 <th>Lượt Xem</th>
                                                 <th>Tác Giả</th>
@@ -75,12 +76,21 @@
                                                 <tr>
                                                     <td>{{ $post->id }}</td>
                                                     <td>{{ $post->title }}</td>
+
+                                                    <td>{{ $post->category->name }}</td>
+
+                                                    <td>
+                                                        @foreach ($post->tags as $tag)
+                                                            <span class="badge badge-pill badge-warning">{{ $tag->name }}</span>
+                                                        @endforeach
+                                                    </td>
+
                                                     <td>
                                                         <img src="{{ Storage::url($post->image) }}"
                                                             style="width: 100px; height: 75px; object-fit: cover;"
                                                             alt="">
                                                     </td>
-                                                    <td>{{ $post->category->name }}</td>
+
                                                     <td>{{ $post->view }}</td>
                                                     <td>{{ $post->author->name }}</td>
                                                     <td>{{ $post->created_at->format('d/m/Y H:i') }}</td>

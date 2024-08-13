@@ -64,6 +64,16 @@
                                                 </select>
                                             </div>
 
+                                            <div class="form-group">
+                                                <select class="form-control" name="tags[]" multiple>
+                                                    <option selected disabled>Chọn Thẻ</option>
+                                                    @foreach ($tags as $id => $name)
+                                                        <option @selected(in_array($id, $postTags)) value="{{ $id }}">
+                                                            {{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
                                             <input type="text" class="form-control input-default" disabled
                                                 value="Tác Giả: {{ $user->name }}">
                                         </div>

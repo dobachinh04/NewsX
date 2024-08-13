@@ -65,14 +65,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::delete('/{post}',                        [AdminPostController::class, 'destroy'])->name('destroy');
     });
 
+    // Admin - Tags:
     Route::prefix('tags')->name('tags.')->group(function() {
         Route::get('/',                                 [TagController::class, 'index'])->name('index');
         Route::get('/create',                           [TagController::class, 'create'])->name('create');
         Route::post('/',                                [TagController::class, 'store'])->name('store');
-        Route::get('/{id}/edit',                       [TagController::class, 'edit'])->name('edit');
-        Route::put('/{id}',                            [TagController::class, 'update'])->name('update');
-        Route::get('/show/{id}',                       [TagController::class, 'show'])->name('show');
-        Route::delete('/{id}',                         [TagController::class, 'destroy'])->name('destroy');
+        Route::get('/{id}/edit',                        [TagController::class, 'edit'])->name('edit');
+        Route::put('/{id}',                             [TagController::class, 'update'])->name('update');
+        Route::get('/show/{id}',                        [TagController::class, 'show'])->name('show');
+        Route::delete('/{id}',                          [TagController::class, 'destroy'])->name('destroy');
     });
 
     // Admin - Users:

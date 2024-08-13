@@ -39,7 +39,7 @@
             </li>
 
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="fa-solid fa-user"></i><span class="nav-text">Người Dùng</span></a>
+                        class="fa-solid fa-user-group"></i><span class="nav-text">Người Dùng</span></a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.users.index') }}">Danh Sách Người Dùng</a></li>
                     <li><a href="{{ route('admin.users.create') }}">Thêm Người Dùng</a></li>

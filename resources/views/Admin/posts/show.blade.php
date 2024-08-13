@@ -48,8 +48,7 @@
 
                                 <div class="mt-3">
                                     <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Quay Lại</a>
-                                    <a href="{{ route('admin.posts.edit', $post) }}"
-                                        class="btn btn-warning">Sửa</a>
+                                    <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-warning">Sửa</a>
                                 </div>
                             </div>
 
@@ -59,6 +58,14 @@
                                         <tr>
                                             <th scope="row">Danh Mục</th>
                                             <td>{{ $post->category->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Thẻ</th>
+                                            <td>
+                                                @foreach ($post->tags as $tag)
+                                                    <span class="badge badge-pill badge-warning">{{ $tag->name }}</span>
+                                                @endforeach
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Tác Giả</th>

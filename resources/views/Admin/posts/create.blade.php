@@ -55,13 +55,22 @@
                                             <div class="form-group">
                                                 <select class="form-control" name="category_id">
                                                     <option selected disabled>Chọn Loại Tin</option>
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @foreach ($categories as $id => $name)
+                                                        <option value="{{ $id }}">{{ $name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
-                                            <input type="text" class="form-control input-default"
+                                            <div class="form-group">
+                                                <select class="form-control" name="tags[]" multiple>
+                                                    <option selected disabled>Chọn Thẻ</option>
+                                                    @foreach ($tags as $id => $name)
+                                                        <option value="{{ $id }}">{{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <input type="text" class="form-control input-default mb-3"
                                                 value="Tác Giả: {{ $user->name }}" disabled>
                                         </div>
 
