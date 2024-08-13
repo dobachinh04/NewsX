@@ -4,96 +4,110 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $categories = Category::get();
+        $data = Category::get();
 
-        return view('admin.categories.index', ['categories' => $categories]);
+        return view('admin.categories.index', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        try {
+            DB::transaction(function () use ($request) {
+                $request->validate([
+                    'name' => 'required',
+                    'image' => 'required|image',
+                ]);
 
-        // Tạo mới category
-        Category::create([
-            'name' => $request->input('name'),
-        ]);
+                $dataPost = [
+                    'name' => $request->name,
+                ];
 
-        // Chuyển hướng về index category và truyền thêm flash session success
-        return redirect()->route('admin.categories.index')->with('success', 'Thêm thành công');
+                if ($request->hasFile('image')) {
+                    $dataPost['image'] = Storage::put('images/categories', $request->file('image'));
+                }
+
+                Category::query()->create($dataPost);
+            });
+
+            return redirect()->route('admin.categories.index')->with('success', 'Thêm thành công');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage())->withInput();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
-
-        return view('admin.categories.update', ['category' => $category]);
+        return view('admin.categories.update', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        try {
+            DB::transaction(function () use ($request, $category) {
+                $request->validate([
+                    'name' => 'required',
+                    'image' => 'nullable|image',
+                ]);
 
-        // Lấy category theo ID và cập nhật dữ liệu
-        $category = Category::findOrFail($id);
-        $category->update([
-            'name' => $request->input('name'),
-        ]);
+                $dataPost = [
+                    'name' => $request->name,
+                ];
 
-        // Chuyển hướng về trang danh sách categories với flash session thành công
-        return redirect()->route('admin.categories.index')->with('success', 'Cập nhật thành công');
+                // Cập nhật ảnh nếu có
+                if ($request->hasFile('image')) {
+                    // Xóa ảnh cũ nếu cập nhật
+                    if ($category->image && Storage::exists($category->image)) {
+                        Storage::delete($category->image);
+                    }
+
+                    // Cập nhật ảnh mới
+                    $dataPost['image'] = Storage::put('images/categories', $request->file('image'));
+                }
+
+                $category->update($dataPost);
+            });
+
+            return redirect()->route('admin.categories.index')->with('success', 'Cập nhật thành công');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage())->withInput();
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        // Tìm category theo ID và xóa nó
-        $category = Category::findOrFail($id);
-        $category->delete();
+        try {
+            DB::transaction(function () use ($category) {
+                // Xóa bài viết
+                $category->delete();
+            });
 
-        // Chuyển hướng về trang danh sách categories với flash session thành công
-        return redirect()->route('admin.categories.index')->with('success', 'Xóa thành công');
+            // Xóa ảnh
+            if ($category->image && Storage::exists($category->image)) {
+                Storage::delete($category->image);
+            }
+
+            return redirect()->route('admin.categories.index')->with('success', 'Xóa thành công');
+        } catch (Exception $e) {
+            return back()->withErrors($e->getMessage())->withInput();
+        }
     }
 
 }

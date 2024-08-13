@@ -50,23 +50,30 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Tên</th>
+                                                <th>Ảnh</th>
                                                 <th>Tạo Ngày</th>
                                                 <th>Lần Cuối Cập Nhật</th>
                                                 <th>Hành Động</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($categories as $category)
+                                            @foreach ($data as $category)
                                                 <tr>
                                                     <td>{{ $category->id }}</td>
                                                     <td>{{ $category->name }}</td>
+
+                                                    <td>
+                                                        <img src="{{ Storage::url($category->image) }}"
+                                                            style="width: 100px; height: 75px; object-fit: cover;"
+                                                            alt="">
+                                                    </td>
+
                                                     <td>{{ $category->created_at->format('d/m/Y H:i') }}</td>
                                                     <td>{{ $category->updated_at->format('d/m/Y H:i') }}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.categories.edit', ['id' => $category->id]) }}"
+                                                        <a href="{{ route('admin.categories.edit', $category) }}"
                                                             class="btn btn-warning">Sửa</a>
-                                                        <form
-                                                            action="{{ route('admin.categories.destroy', ['id' => $category->id]) }}"
+                                                        <form action="{{ route('admin.categories.destroy', $category) }}"
                                                             method="POST" style="display:inline;"
                                                             onsubmit="return confirm('Bạn có chắc chắn muốn xóa không?');">
                                                             @csrf

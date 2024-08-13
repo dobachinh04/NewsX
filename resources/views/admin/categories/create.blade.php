@@ -50,12 +50,24 @@
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form action="{{ route('admin.categories.store') }}" method="POST">
+                                <form action="{{ route('admin.categories.store') }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="form-group">
                                         <input type="text" name="name" class="form-control input-default "
                                             placeholder="Tên Loại Tin">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Tải
+                                                Lên</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="image" accept="image/*">
+                                            <label class="custom-file-label">Chọn Ảnh</label>
+                                        </div>
                                     </div>
 
                                     <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">

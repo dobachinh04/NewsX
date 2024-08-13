@@ -41,20 +41,40 @@
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
+                                <form action="{{ route('admin.categories.update', $category) }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
 
                                     @method('PUT')
 
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default " placeholder="Tên Loại Tin"
-                                            value="{{ old('name', $category->name) }}" name="name">
+                                            value="{{ $category->name }}" name="name">
                                     </div>
 
-                                    <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
-                                        Quay Lại</a>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Tải
+                                                Lên</span>
+                                        </div>
 
-                                    <button type="submit" class="btn btn-warning">Cập Nhật</button>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="image" accept="image/*">
+                                            <label class="custom-file-label">Chọn Ảnh</label>
+                                        </div>
+                                    </div>
+
+                                    @if ($category->image)
+                                        <img class="mb-3" src="{{ Storage::url($category->image) }}" style="width: 100px;"
+                                            alt="{{ Storage::url($category->image) }}">
+                                    @endif
+
+                                    <div>
+                                        <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
+                                            Quay Lại</a>
+
+                                        <button type="submit" class="btn btn-warning">Cập Nhật</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
