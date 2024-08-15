@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\Tag;
@@ -54,6 +55,14 @@ class PostController extends Controller
                 }
 
                 $post = Post::query()->create($dataPost);
+
+
+                foreach ($request->galleries as $image) {
+                    Gallery::query()->create([
+                        'post_id' => $post->id,
+                        'image' => Storage::put('images/galleries', $image),
+                    ]);
+                }
 
                 $post->tags()->attach($request->tags);
             });
