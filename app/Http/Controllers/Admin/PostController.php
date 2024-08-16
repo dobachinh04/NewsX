@@ -126,6 +126,15 @@ class PostController extends Controller
 
                 $post->update($dataPost);
 
+                foreach ($request->galleries ?? [] as $id => $image) {
+                    $gallery = Gallery::findOrFail($id);
+
+                    $gallery->update([
+                        'post_id' => $post->id,
+                        'image' => Storage::put('images/galleries', $image),
+                    ]);
+                }
+
                 $post->tags()->sync($request->tags);
             });
 
@@ -139,6 +148,10 @@ class PostController extends Controller
     {
         try {
             DB::transaction(function () use ($post) {
+                $post->tags()->sync([]);
+
+                $post->galleries()->delete();
+
                 // Xóa bài viết
                 $post->delete();
             });
