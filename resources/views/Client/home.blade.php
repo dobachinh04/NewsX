@@ -70,7 +70,7 @@
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
                                     <a href="{{ route('client.show', ['id' => $largePost->id]) }}"><img
-                                            src="{{ Storage::url('images/' . $largePost->image) }}"
+                                            src="{{ Storage::url($largePost->image) }}"
                                             style="width: 900px; height: 710px; object-fit: cover;" alt=""></a>
                                 </div>
 
@@ -92,7 +92,7 @@
                                     <!-- Blog Thumbnail -->
                                     <div class="blog-thumbnail">
                                         <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                src="{{ asset('storage/images/' . $post->image) }}"
+                                                src="{{ Storage::url($post->image) }}"
                                                 style="width: 900px; height: 340px; object-fit: cover;" alt=""></a>
                                     </div>
 
@@ -204,7 +204,7 @@
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            src="{{ Storage::url($post->image) }}"
                                                             style="width: 350px; height: 240px; object-fit: cover;"
                                                             alt=""></a>
                                                 </div>
@@ -233,7 +233,7 @@
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            src="{{ Storage::url($post->image) }}"
                                                             style="width: 120px; height: 90px; object-fit: cover;"
                                                             alt=""></a>
                                                 </div>
@@ -265,7 +265,7 @@
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            src="{{ Storage::url($post->image) }}"
                                                             style="width: 350px; height: 240px; object-fit: cover;"
                                                             alt=""></a>
                                                 </div>
@@ -292,7 +292,7 @@
                                                 <!-- Blog Thumbnail -->
                                                 <div class="blog-thumbnail">
                                                     <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                                            src="{{ asset('storage/images/' . $post->image) }}"
+                                                            src="{{ Storage::url($post->image) }}"
                                                             style="width: 120px; height: 90px; object-fit: cover;"
                                                             alt=""></a>
                                                 </div>
@@ -479,7 +479,7 @@
     <!-- ##### Video Area Start ##### -->
     @foreach ($most1ViewedPost as $post)
         <section class="video-area bg-img bg-overlay bg-fixed"
-            style="background-image: url('{{ Storage::url('images/' . $post->image) }}')">
+            style="background-image: url('{{ Storage::url($post->image) }}')">
             <div class="container">
                 <div class="row">
                     <!-- Featured Video Area -->
@@ -510,7 +510,7 @@
                                 <!-- Blog Thumbnail -->
                                 <div class="blog-thumbnail">
                                     <a href="{{ route('client.show', ['id' => $post->id]) }}">
-                                        <img src="{{ asset('storage/images/' . $post->image) }}"
+                                        <img src="{{ Storage::url($post->image) }}"
                                             style="width: 350px; height: 240px; object-fit: cover" alt="">
                                     </a>
                                     {{-- <a href="#" class="video-btn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
@@ -546,7 +546,7 @@
                             <!-- Blog Thumbnail -->
                             <div class="blog-thumbnail">
                                 <a href="{{ route('client.show', ['id' => $post->id]) }}"><img
-                                        src="{{ asset('storage/images/' . $post->image) }}"
+                                        src="{{ Storage::url($post->image) }}"
                                         style="width: 350px; height: 240px; object-fit: cover" alt=""></a>
                             </div>
 
