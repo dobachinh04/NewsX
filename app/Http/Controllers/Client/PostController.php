@@ -51,20 +51,23 @@ class PostController extends Controller
         $random9Posts = Post::inRandomOrder()->take(9)->get();
 
         // Trả dữ liệu đến view 'home'
-        return view('client.home', [
-            'categories' => $categories,
-            'latestPosts' => $latestPosts,
-            'otherPosts' => $otherPosts,
-            'trendingPosts' => $trendingPosts,
-            'slideCategories' => $slideCategories,
-            'largePost' => $largePost,
-            'smallPosts' => $smallPosts,
-            'most1ViewedPost' => $most1ViewedPost,
-            'most2ViewedPost' => $most2ViewedPost,
-            'most6ViewedPost' => $most6ViewedPost,
-            'random5Posts' => $random5Posts,
-            'random9Posts' => $random9Posts,
-        ]);
+        return view(
+            'client.home',
+            compact(
+                'categories',
+                'latestPosts',
+                'otherPosts',
+                'trendingPosts',
+                'slideCategories',
+                'largePost',
+                'smallPosts',
+                'most1ViewedPost',
+                'most2ViewedPost',
+                'most6ViewedPost',
+                'random5Posts',
+                'random9Posts'
+            )
+        );
     }
 
     /**
